@@ -1,0 +1,28 @@
+{
+    "project_name": "Project Name",
+    "repo_bare": "repo",
+    "project_link": "https://www.boxfish.be",
+    "module_name": "module_name",
+    "class_name": "ClassName",
+    "project_description": "",
+    "keywords": "",
+    "require_config_file": false,
+    "add_documentation": false,
+    "create_assets_dir": false,
+    "create_venv": true,
+    "init_git": true,
+    "__prompts__": {
+        "project_name": "Project name (used in README.md and headers)",
+        "repo_bare": "Repository name without '.git' suffix",
+        "project_link": "Project link",
+        "module_name": "Name of the module, using underscores",
+        "class_name": "Name of the base class in CamelCase",
+        "project_description": "One line project description",
+        "keywords": "Package keywords (list of strings)",
+        "require_config_file": "Require user to create and use a config file?",
+        "add_documentation": "Add Sphinx documenation?",
+        "create_assets_dir": "Create directory for assets?",
+        "create_venv": "Create a venv?",
+        "init_git": "Initialize a Git repository and switch to develop branch?"
+    }
+}
