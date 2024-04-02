@@ -11,6 +11,8 @@ import traceback
 from typing import List
 
 from log.log import add_rotating_file, setup_logger
+from PyQt5 import QtCore as qtc
+from PyQt5 import QtGui as qtg
 from PyQt5 import QtWidgets as qtw
 from ui_sources.mainwindow import Ui_MainWindow
 
