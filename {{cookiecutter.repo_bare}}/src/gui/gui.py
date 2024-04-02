@@ -12,8 +12,7 @@ from typing import List
 
 from log.log import add_rotating_file, setup_logger
 from PyQt5 import QtWidgets as qtw
-
-from .mainwindow import Ui_MainWindow
+from ui_sources.mainwindow import Ui_MainWindow
 
 log = setup_logger()
 add_rotating_file(log)
