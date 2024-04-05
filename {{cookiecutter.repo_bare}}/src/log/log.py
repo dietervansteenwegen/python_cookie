@@ -14,9 +14,11 @@ from pathlib import Path
 from typing import Union
 
 import pytz
+{% if cookiecutter.add_gui %}
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import (QDesktopWidget, QDialog, QHBoxLayout,
                              QPlainTextEdit)
+{% endif %}
 
 LOG_FMT = (
     '%(asctime)s|%(levelname)-8.8s|%(thread)-18.18d|%(threadName)s|%(module)-15.15s|%(lineno)-0.4d|'
@@ -112,6 +114,7 @@ def add_rotating_file(logger: logging.Logger) -> None:
     rot_fil_handler.setFormatter(MilliSecondsFormatter(LOG_FMT))
     logger.addHandler(rot_fil_handler)
 
+{% if cookiecutter.add_gui %}
 
 class QTLogHandler(logging.Handler):
     """Logging handler for the QT logging dialog box.
@@ -158,3 +161,4 @@ class DialogLog(QDialog):
         self.move(0, y)
         log_text_box = QTLogHandler(self)
         logging.getLogger().addHandler(log_text_box)
+{% endif %}

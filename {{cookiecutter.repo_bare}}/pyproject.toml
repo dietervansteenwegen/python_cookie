@@ -29,13 +29,19 @@ Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/b
 # Documentation = 'https://readthedocs.org'
 
 [project.scripts]
-{{cookiecutter.module_name}} = 'main:main'
+
+{{cookiecutter.module_name}} = '__main__:main'
 
 [project.gui-scripts]
-{{cookiecutter.module_name}}-gui = "main:gui"
+{% if cookiecutter.add_gui %}
+{{cookiecutter.module_name}}-gui = "__main__:main"
+{% endif %}
 
 [project.optional-dependencies]
+{% if cookiecutter.add_gui %}
+
 gui = ['PyQt5']
+{% endif %}
 # cli = ['rich', 'click']
 
 [build-system]

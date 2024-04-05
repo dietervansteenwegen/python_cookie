@@ -37,9 +37,10 @@ prep:
 	pre-commit run --all-files
 
 ## Build using pip-tools
-
+{% if cookiecutter.add_gui %}
 ui:
 	pyuic5 assets/gui_sources/mainwindow.ui -o src/gui/ui_sources/mainwindow.py
+{% endif %}
 
 
 #################################################################################

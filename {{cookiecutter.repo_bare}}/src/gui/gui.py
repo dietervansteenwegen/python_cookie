@@ -6,19 +6,18 @@ __author__ = 'Dieter Vansteenwegen'
 __project__ = '{{cookiecutter.project_name}}'
 __project_link__ = '{{cookiecutter.project_link}}'
 
+import logging
 import sys
 import traceback
 from typing import List
 
-from log.log import add_rotating_file, setup_logger
+from log.log import DialogLog
 from PyQt5 import QtCore as qtc
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtWidgets as qtw
 from ui_sources.mainwindow import Ui_MainWindow
 
-log = setup_logger()
-add_rotating_file(log)
-
+log = logging.getLogger(__name__)
 
 class MainWindow(Ui_MainWindow):
 
@@ -26,6 +25,8 @@ class MainWindow(Ui_MainWindow):
         super().__init__(*args, **kwargs)
         log.debug('Starting MainWindow')
         self.setupUi(self)
+        self.dialog_log: DialogLog = DialogLog(self)
+        self.dialog_log.show()
 
 
 def excepthook(exc_type, exc_value, exc_tb) -> None:
@@ -38,8 +39,6 @@ def excepthook(exc_type, exc_value, exc_tb) -> None:
 
 
 def start_gui() -> None:
-    log = setup_logger()
-    add_rotating_file(log)
     log.debug('Root logger initialized.')
     sys.excepthook = excepthook
     app = qtw.QApplication([])

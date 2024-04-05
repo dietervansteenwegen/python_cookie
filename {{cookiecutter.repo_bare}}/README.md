@@ -4,7 +4,7 @@
 
 See my [website](boxfish.be) for information on the project and hardware.
 
-![](/assets/images/screenshot.png)
+![Screenshot](/assets/images/screenshot.png)
 
 ## Usage example
 
