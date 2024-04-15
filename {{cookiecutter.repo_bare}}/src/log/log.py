@@ -21,9 +21,13 @@ from PyQt5.QtWidgets import (QDesktopWidget, QDialog, QHBoxLayout,
 {% endif %}
 
 LOG_FMT = (
-    '%(asctime)s|%(levelname)-8.8s|%(thread)-18.18d|%(threadName)s|%(module)-15.15s|%(lineno)-0.4d|'
+    '%(asctime)s|%(levelname)-8.8s|%(module)-15.15s|%(lineno)-0.4d|'
     '%(funcName)-20.20s|%(message)s|'
 )
+# LOG_FMT = (
+#     '%(asctime)s|%(levelname)-8.8s|%(thread)-18.18d|%(threadName)s|%(module)-15.15s|%(lineno)-0.4d|'
+#     '%(funcName)-20.20s|%(message)s|'
+# )
 DATEFMT = '%d/%m/%Y %H:%M:%S'
 LOGFILE = './logs/logfile.log'
 LOG_FILE_MAX_BYTES = 1000000
