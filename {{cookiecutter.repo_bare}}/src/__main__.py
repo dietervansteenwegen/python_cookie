@@ -23,8 +23,6 @@ def gui():
 
 
 def main():
-    log = setup_logger()
-    add_rotating_file(log)
     conf = Config()
     conf.get_config()
     {% if cookiecutter.add_gui %}
