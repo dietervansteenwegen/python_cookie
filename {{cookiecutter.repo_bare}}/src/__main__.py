@@ -8,12 +8,12 @@ __project_link__ = '{{cookiecutter.project_link}}'
 
 from config.config import Config
 from {{cookiecutter.module_name}} import {{cookiecutter.class_name}}
-{% if cookiecutter.add_gui % -}
+{% if cookiecutter.add_gui -%}
 from gui.gui import start_gui
 
 def gui():
     start_gui()
-{- % endif %}
+{%- endif %}
 
 
 def main():
