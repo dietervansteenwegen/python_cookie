@@ -119,7 +119,6 @@ def add_rotating_file(logger: logging.Logger) -> None:
     logger.addHandler(rot_fil_handler)
 
 {% if cookiecutter.add_gui %}
-
 class QTLogHandler(logging.Handler):
     """Logging handler for the QT logging dialog box.
 

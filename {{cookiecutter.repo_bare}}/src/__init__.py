@@ -6,3 +6,13 @@
 __author__ = 'Dieter Vansteenwegen'
 __project__ = '{{cookiecutter.project_name}}'
 __project_link__ = '{{cookiecutter.project_link}}'
+
+from log.log import add_rotating_file, setup_logger
+
+
+def _setup_log():
+    log = setup_logger()
+    add_rotating_file(log)
+
+
+_setup_log()
