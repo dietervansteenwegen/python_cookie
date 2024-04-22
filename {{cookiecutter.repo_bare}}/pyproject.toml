@@ -30,19 +30,17 @@ Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/b
 
 [project.scripts]
 
-{{cookiecutter.module_name}} = '__main__:main'
+{{cookiecutter.module_name}} = 'main:main'
 
 [project.gui-scripts]
 {% if cookiecutter.add_gui %}
-{{cookiecutter.module_name}}-gui = "__main__:main"
+{{cookiecutter.module_name}}-gui = "main:main"
 {% endif %}
 
 [project.optional-dependencies]
 {% if cookiecutter.add_gui %}
-
 gui = ['PyQt5']
 {% endif %}
-# cli = ['rich', 'click']
 
 [build-system]
 requires = ['setuptools', 'setuptools-scm']
