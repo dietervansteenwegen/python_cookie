@@ -29,7 +29,7 @@ def get_arguments() -> argparse.Namespace:
     required_args.add_argument(
         '-c',
         '--config_file',
-        help='Location of the config file functionality.',
+        help='Location of the config file.',
         action='store',
         dest='config_file',
         required=True,
