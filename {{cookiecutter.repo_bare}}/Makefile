@@ -1,6 +1,8 @@
-## Based on https://duarteocarmo.com/blog/opinionated-python-boilerplate
-
+{% if cookiecutter.add_documentation %}
 .PHONY: install clean prep ui cleanup_git update_docs
+{% else %}
+.PHONY: install clean prep ui cleanup_git
+{% endif %}
 
 ## Create list of local branches in a temporary file.
 ## Afterwards remove all branches from file.
@@ -15,9 +17,11 @@ cleanup_git:
 	@echo ">> Hit <CTRL> + C to cancel."
 	@vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches
 
+{% if cookiecutter.add_documentation %}
 update_docs:
 	sphinx-apidoc.exe --force --output-dir ./docs/source ./src
 	sphinx-build -b html docs/source/ docs/build/
+{%- endif %}
 
 ## Install for production
 install:
@@ -36,8 +40,8 @@ clean:
 prep:
 	pre-commit run --all-files
 
-## Build using pip-tools
 {% if cookiecutter.add_gui %}
+## Convert UI files to .py
 ui:
 	pyuic5 assets/gui_sources/mainwindow.ui -o src/gui/ui_sources/mainwindow.py
 {% endif %}
@@ -49,7 +53,7 @@ ui:
 
 .DEFAULT_GOAL := help
 
-# Inspired by <http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html>
+# Based on <http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html>
 # sed script explained:
 # /^##/:
 # 	* save line in hold space
