@@ -1,4 +1,4 @@
-# {{cookiecutter.module_name}} Changelog
+# {{cookiecutter.project_name}} CHANGELOG
 
 ## Not released yet
 
