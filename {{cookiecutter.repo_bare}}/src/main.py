@@ -19,6 +19,7 @@ def gui():
 def _setup_log():
     log = setup_logger()
     add_rotating_file(log)
+    return log
 
 
 def main():
@@ -30,7 +31,7 @@ def main():
     {{cookiecutter.class_name}}(conf)
     {% endif %}
 
-_setup_log()
+log = _setup_log()
 
 if __name__ == '__main__':
     main()
