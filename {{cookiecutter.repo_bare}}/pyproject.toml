@@ -39,9 +39,10 @@ Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/b
 
 [project.optional-dependencies]
 {% if cookiecutter.add_gui %}
-gui = ['PyQt5']
+
 {% endif %}
 
+gui = ['PyQt5']
 [build-system]
 requires = ['setuptools', 'setuptools-scm']
 # build-backend = 'setuptools.build.meta'
@@ -128,7 +129,13 @@ ignore = [
     "TRY400",
     # Raising and catching exceptions in the same block may lead to confusion
     "TRY301",
-
+{% if cookiecutter.add_gui %}
+    # PyQT doesn't adhere to or works well with N801/N802/N803/N813
+    "N801",   
+    "N802",
+    "N803",
+    "N813",
+{% endif %}
 ]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
