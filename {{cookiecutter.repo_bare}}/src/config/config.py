@@ -21,7 +21,11 @@ def get_arguments() -> argparse.Namespace:
         add_help=True,
         description=PROGRAM_DESCRIPTION,
     )
+    """Parse  and evaluate the supplied arguments.
 
+    Returns:
+        argparse.Namespace: Namespace containing the parsed arguments
+    """
     {%if- cookiecutter.require_config_file -%}
 
     ## ADD REQUIRED ARG BELOW THIS GROUP. OPTIONAL ABOVE...
@@ -54,6 +58,10 @@ def get_arguments() -> argparse.Namespace:
     return parser.parse_args()
 
 class HelpfullArgumentParser(argparse.ArgumentParser):
+    """ArgumentParser subclass with improved error feedback.
+
+    Provides better error message to user.
+    """    
     def error(self, msg):
         print('-'*80)
         print(f'\nERROR: {msg}\n\n')
@@ -72,12 +80,12 @@ class Config:
         self.config_fn:Union[None|Path] = None
         self.config = None
 
-    def get_config(self):
+    def get_config(self)-> None:
         self.arguments = get_arguments()
         if hasattr(self.arguments, 'config_file') and self.arguments.config_file:
             self._get_config_file()
 
-    def _get_config_file(self):
+    def _get_config_file(self)-> None:
         if Path(self.arguments.config_file).is_file():
             self.config_fn = Path(self.arguments.config_file)
             log.info(f'Reading config file {self.config_fn}')
@@ -88,7 +96,8 @@ class Config:
             log.warning(err_msg)
             self.config = None
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """String representation of the Config class."""
         _sections: list[str] = self.config.sections()
         _sections.append('DEFAULT')
         all_conf = []

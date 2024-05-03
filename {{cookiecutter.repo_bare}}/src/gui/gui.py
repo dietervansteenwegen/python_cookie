@@ -30,6 +30,7 @@ class MainWindow(Ui_MainWindow):
 
 
 def excepthook(exc_type, exc_value, exc_tb) -> None:
+    """Exception hook that can be used to handle exceptions."""
     tabbed_msg: List[str] = [
         i.replace('\n', '\t').replace('  ', '')
         for i in traceback.format_exception(exc_type, exc_value, exc_tb)

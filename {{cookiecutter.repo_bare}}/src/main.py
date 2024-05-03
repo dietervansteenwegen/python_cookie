@@ -17,6 +17,7 @@ def gui():
 {%- endif %}
 
 def _setup_log():
+    """Set up logging."""    
     log = setup_logger()
     add_rotating_file(log)
     return log
