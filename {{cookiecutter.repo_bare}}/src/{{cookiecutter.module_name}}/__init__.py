@@ -7,4 +7,4 @@ __author__ = 'Dieter Vansteenwegen'
 __project__ = '{{cookiecutter.project_name}}'
 __project_link__ = '{{cookiecutter.project_link}}'
 
-from .{{cookiecutter.module_name}} import {{cookiecutter.class_name}}
+from .{{cookiecutter.module_name}} import {{cookiecutter.class_name}}  # noqa: F401
