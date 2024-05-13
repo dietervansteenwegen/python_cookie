@@ -8,7 +8,7 @@
             "name": "Run main, no args",
             "type": "debugpy",
             "request": "launch",
-            "program": "src/__main__.py",
+            "program": "src/main.py",
             "console": "integratedTerminal",
             "args": [
                 "-c",
