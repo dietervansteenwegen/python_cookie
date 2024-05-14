@@ -25,8 +25,8 @@ LOG_FMT = (
     '%(funcName)-20.20s|%(message)s|'
 )
 # LOG_FMT = (
-#     '%(asctime)s|%(levelname)-8.8s|%(thread)-18.18d|%(threadName)s|%(module)-15.15s|%(lineno)-0.4d|'
-#     '%(funcName)-20.20s|%(message)s|'
+#     '%(asctime)s|%(levelname)-8.8s|%(thread)-18.18d|%(threadName)s|%(module)-15.15s|'
+#     '%(lineno)-0.4d|%(funcName)-20.20s|%(message)s|'
 # )
 DATEFMT = '%d/%m/%Y %H:%M:%S'
 LOGFILE = './logs/logfile.log'
