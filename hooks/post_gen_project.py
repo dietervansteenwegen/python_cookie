@@ -2,7 +2,17 @@
 # -*- coding: utf-8 -*-
 # vim: ts=4:sw=4:expandtab:cuc:autoindent:ignorecase:colorcolumn=99
 import contextlib
+import subprocess
 from pathlib import Path
+
+to_log:list[str] = []
+
+def run_command(cmd:str):
+    global to_log
+    rtn = subprocess.run(cmd.split(' '), capture_output= True, text=True,)
+    if rtn.returncode != 0:
+        # to_log.append(f'{cmd} returned {rtn.returncode}: \n {rtn.stderr}\n{rtn.stdout}')
+        to_log.append([cmd, rtn.returncode,rtn.stderr, rtn.stdout])
 
 def rmdir(directory):
     directory = Path(directory)
@@ -15,25 +25,26 @@ def rmdir(directory):
         directory.rmdir()
 
 def rm(file):
+    global to_log
     file = Path(file)
     if file.is_file():
         file.unlink()
     else:
-        print(f'----> Could not remove file {file}!')
+        to_log.append[f'Could not remove file {file}!', -1, '', '']
 
-print('\n\n--> Generated files, beginning post_gen_cleanup...\n')
+print('\n--> Generated files in "./{{cookiecutter.repo_bare}}", beginning cleanup...')
+
 ############################
 # DOCS
 ############################
 {% if cookiecutter.add_documentation %}
-import subprocess
-print('--> Generating API documentation...')
+print('--> Generating API documentation...', end = '')
 subprocess.check_call(["sphinx-apidoc", 
                        "--force", 
                        "--output-dir", "./docs/source",
                     #    "./src/{{cookiecutter.module_name}}"])
                        "./src"])
-print('--> Done\n')
+print(' Done\n')
 {% else %}
 rmdir('docs')
 {% endif %}
@@ -56,49 +67,66 @@ rm('config.ini')
 # GUI
 ############################
 {% if not cookiecutter.add_gui %}
-print('--> Beginning GUI cleanup...')
+print('--> Beginning GUI cleanup...', end = '')
 rmdir('src/gui')
 rmdir('assets/gui_sources')
-print('--> Done\n')
+print(' Done')
 {% endif %}
-
 
 ############################
 # GIT
 ############################
 {% if cookiecutter.init_git %}
 print('--> Initializing GIT and pre-commit...')
-import subprocess
-subprocess.check_call(["git", "init", "--quiet"])
-subprocess.check_call(["git", "remote", "add", "origin", "git_prive:dietervansteenwegen/{{cookiecutter.repo_bare}}.git"])
-subprocess.check_call(["git", "checkout",  "-b",  "develop", "--quiet"])
-subprocess.check_call(["pre-commit", "autoupdate"], stdout = subprocess.DEVNULL)
-subprocess.check_call(["pre-commit", "install"], stdout = subprocess.DEVNULL)
-subprocess.check_call(["git", "add", "*"])
-print('--> Done\n')
+run_command('git init --quiet')
+run_command('git remote add origin git_prive:dietervansteenwegen/{{cookiecutter.repo_bare}}.git')
+run_command('git checkout -b develop --quiet')
+# subprocess.check_call(["pre-commit", "autoupdate"], stdout = subprocess.DEVNULL)
+run_command('pre-commit autoupdate')
+run_command('pre-commit install')
+# subprocess.check_call(["pre-commit", "install"], 
+#                       stdout = subprocess.DEVNULL, 
+#                       stderr = subprocess.DEVNULL,
+#                       )
+run_command('git add *')
+run_command('pre-commit run --all-files')
+
+print('--> Done')
 {% endif %}
 
 ############################
 # VENV
 ############################
 {% if cookiecutter.create_venv %}
-print('--> Setting up virtual environment...')
+print('--> Setting up virtual environment...', end='')
 import venv
-import subprocess
-subprocess.check_call(["python", "-m", "pip", "install", "--upgrade", "--quiet", "pip"])
+run_command('python -m pip install --upgrade --quiet pip')
 venv.create('venv')
-print('--> Done\n')
+print('Done')
 {% endif %}
-
 
 ############################
 # FINISH
 ############################
-print('*' * 80)
-print('   Finished creating project "{{cookiecutter.project_name}}" in directory '
-      '"./{{cookiecutter.repo_bare}}"...')
-{% if cookiecutter.create_venv %}
-print('\n   --> Created a virtual environment, remember to activate it! <--')
-{% endif %}
+def print_formatted(msg)-> None:
+    print(f'*{msg: ^78}*')
 
+print('\n' + '*' * 80)
+print_formatted('Finished creating project "{{cookiecutter.project_name}}" in directory '
+      '"./{{cookiecutter.repo_bare}}"...')
+if to_log:
+    print_formatted('')
+    print_formatted('Errors with the following commands:')
+    with open('cookiecutter.log', 'x') as output:
+        for log in to_log:
+            print_formatted(log[0])
+            output.write('*' * 80)
+            err_msg = f'Command {log[0]} returned {log[1]}. Output: {log[2]}\n{log[3]}'
+            output.write(err_msg)
+            output.write('*' * 80)
+    print_formatted('Check output logs in  "./cookiecutter.log"')
+    print_formatted('')
+{% if cookiecutter.create_venv %}
+print_formatted('--> Created a virtual environment, remember to activate it! <--')
+{% endif %}
 print('*' * 80)
