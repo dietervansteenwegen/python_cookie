@@ -33,6 +33,7 @@ def main():
     {% endif %}
 
 log = _setup_log()
+log.info('Starting {{cookiecutter.project_name}}')
 
 if __name__ == '__main__':
     main()
