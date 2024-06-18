@@ -1,3 +1,4 @@
 {% if cookiecutter.add_gui %}
 PyQt5
 {% endif %}
+pytz
