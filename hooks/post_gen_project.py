@@ -127,6 +127,7 @@ if to_log:
     print_formatted('Check output logs in  "./cookiecutter.log"')
     print_formatted('')
 {% if cookiecutter.create_venv %}
-print_formatted('--> Created a virtual environment, remember to activate it! <--')
+print_formatted('--> Created a virtual environment, remember to activate it and run python '
+                '-m ensurepip! <--')
 {% endif %}
 print('*' * 80)
