@@ -8,9 +8,10 @@ __project__ = '{{cookiecutter.project_name}}'
 __project_link__ = '{{cookiecutter.project_link}}'
 import argparse
 import logging
-from configparser import ConfigParser
 from pathlib import Path
 from typing import Union
+
+import tomli
 
 log = logging.getLogger(__name__)
 PROGRAM_DESCRIPTION: str = '{{cookiecutter.project_name}}'
@@ -77,36 +78,27 @@ class HelpfullArgumentParser(argparse.ArgumentParser):
 class Config:
     def __init__(self):
         self.arguments:Union[None|argparse.Namespace] = {}
-        self.config_fn:Union[None|Path] = None
         self.config = None
 
-    def get_config(self)-> None:
+    def get_config(self) -> None:
         self.arguments = get_arguments()
         if hasattr(self.arguments, 'config_file') and self.arguments.config_file:
-            self._get_config_file()
+            self._read_config_file()
 
-    def _get_config_file(self)-> None:
-        if Path(self.arguments.config_file).is_file():
-            self.config_fn = Path(self.arguments.config_file)
-            log.info(f'Reading config file {self.config_fn}')
-            self.config = ConfigParser()
-            self.config.read(self.config_fn)
-        else:
-            err_msg = f'Config file {self.arguments.config_file} is not a file.'
-            log.warning(err_msg)
-            self.config = None
+    def _read_config_file(self) -> None:
+        try:
+            with Path(self.arguments.config_file).open(mode='rb') as f:
+                self.config: dict = tomli.load(f)
+
+        except FileNotFoundError:
+            err_msg = f'Config file {self.arguments.config_file} does not exist.'
+            raise FileNotFoundError(err_msg) from None
 
     def __str__(self) -> str:
         """String representation of the Config class."""
-        _sections: list[str] = self.config.sections()
-        _sections.append('DEFAULT')
-        all_conf = []
-        for section in _sections:
-            for key, value in self.config.items(section):
-                all_conf.append([section, key, value])
 
         msg = (
-            f'Config with arguments {self.arguments} and config {all_conf} '
-            f'from file [{self.config_fn}]'
+            f'Config with arguments {self.arguments} and config {self.config} '
+            f'from file [{self.arguments.config_file}]'
         )
         return msg

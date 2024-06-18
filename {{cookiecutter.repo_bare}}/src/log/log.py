@@ -32,7 +32,7 @@ DATEFMT = '%d/%m/%Y %H:%M:%S'
 LOGFILE = './logs/logfile.log'
 LOG_FILE_MAX_BYTES = 1000000
 LOG_BACKUP_COUNT = 10
-TZ_UTC = pytz.timezone('utc')
+TZ_UTC = dt.timezone.utc
 CONSOLE_LOG_LEVEL = logging.INFO
 
 

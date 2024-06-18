@@ -1,0 +1,12 @@
+# A few general pointers:
+# - Strings should be quoted with "double quotes"
+# - Empty strings should be empty: "", not non-existent.
+# - Booleans should be [true/false] (all lowercase)
+
+[general]
+some_string = "Test id" # String example.
+secret_code = ""        # Empty string.
+is_example = true       # boolean value
+
+[example.subcategory]
+example_list = [6, 23, 29, 46] # Example of a list
