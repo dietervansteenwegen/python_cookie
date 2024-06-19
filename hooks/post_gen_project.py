@@ -112,29 +112,25 @@ class EnvBuilderWithRequirements(venv.EnvBuilder):
         distpath = os.path.join(binpath, fn)
         # Download script into the virtual environment's binaries folder
         urlretrieve(url, distpath)
-        progress = self.progress
-        if self.verbose:
-            term = "\n"
-        else:
-            term = ""
-        if progress is not None:
-            progress("Installing %s ...%s" % (name, term), "main")
-        else:
-            sys.stderr.write("Installing %s ...%s" % (name, term))
-            sys.stderr.flush()
-        args = [context.env_exe, fn]
-        p = Popen(args, stdout=PIPE, stderr=PIPE, cwd=binpath)
-        t1 = Thread(target=self.reader, args=(p.stdout, "stdout"))
-        t1.start()
-        t2 = Thread(target=self.reader, args=(p.stderr, "stderr"))
-        t2.start()
-        p.wait()
-        t1.join()
-        t2.join()
-        if progress is not None:
-            progress("done.", "main")
-        else:
-            sys.stderr.write("done.\n")
+        # progress = self.progress
+        # if self.verbose:
+        #     term = "\n"
+        # else:
+        #     term = ""
+        # args = [context.env_exe, fn]
+        run_command(f'{context.env_exe} {fn}', cwd = binpath)
+        # p = Popen(args, stdout=PIPE, stderr=PIPE, cwd=binpath)
+        # t1 = Thread(target=self.reader, args=(p.stdout, "stdout"))
+        # t1.start()
+        # t2 = Thread(target=self.reader, args=(p.stderr, "stderr"))
+        # t2.start()
+        # p.wait()
+        # t1.join()
+        # t2.join()
+        # if progress is not None:
+        #     progress("done.", "main")
+        # else:
+        #     sys.stderr.write("done.\n")
         # Clean up - no longer needed
         os.unlink(distpath)
 
@@ -165,9 +161,9 @@ class EnvBuilderWithRequirements(venv.EnvBuilder):
         self.install_script(context, "pip", url)
 to_log:list[str] = []
 
-def run_command(cmd:str):
+def run_command(cmd:str, **kwargs):
     global to_log
-    rtn = subprocess.run(cmd.split(' '), capture_output= True, text=True,)
+    rtn = subprocess.run(cmd.split(' '), capture_output= True, text=True, **kwargs)
     if rtn.returncode != 0:
         to_log.append([cmd, rtn.returncode,rtn.stderr, rtn.stdout])
 
