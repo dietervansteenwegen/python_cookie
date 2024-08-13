@@ -75,6 +75,7 @@ class EnvBuilderWithRequirements(venv.EnvBuilder):
         pip_path = pathlib.Path(binpath, executable)
         requirement_fn = pathlib.Path(pathlib.Path.cwd(), "requirements.txt")  
         # p = Popen([pip_path, "install", "-r", requirement_fn], stdout=None, stderr=None,)
+        print(f'Running pip {pip_path} to install from {requirement_fn}')
         run_command(f'{pip_path} install -r {requirement_fn}')
         #TODO: use 
         # t1 = Thread(target=self.reader, args=(p.stdout, "stdout"))
@@ -159,7 +160,6 @@ class EnvBuilderWithRequirements(venv.EnvBuilder):
         """
         url = "https://bootstrap.pypa.io/get-pip.py"
         self.install_script(context, "pip", url)
-to_log:list[str] = []
 
 def run_command(cmd:str, **kwargs):
     global to_log
@@ -186,6 +186,7 @@ def rm(file):
         to_log.append[f'Could not remove file {file}!', -1, '', '']
 
 print('\n--> Generated files in "./{{cookiecutter.repo_bare}}".')
+to_log:list[str] = []
 
 ############################
 # DOCS
@@ -240,7 +241,6 @@ run_command('pre-commit install')
 run_command('git add *')
 run_command('pre-commit run --all-files')
 print(' Done!')
-
 {% endif %}
 
 ############################
@@ -269,7 +269,8 @@ if to_log:
     with open('cookiecutter.log', 'x') as output:
         for log in to_log:
             output.write('*' * 80)
-            err_msg = f'\nCommand [{log[0]}] returned [{log[1]}]. Output on stderr: {log[3]}'
+            err_msg = f'\nCommand [{log[0]}] returned\n [{log[1]}]. \nOutput on stderr: {log[3]}\n'
+            err_msg = f'Output on stdout: {log[2]}\n'
             output.write(err_msg)
             output.write('*' * 80)
             print_formatted(f'"{log[0]}"')
