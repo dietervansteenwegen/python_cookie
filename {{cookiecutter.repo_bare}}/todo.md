@@ -1,6 +1,11 @@
 # TODO Afterwards
 
-## Activate VENV
+## UV
+
+- `uv venv --python 3.11.6` (or other version)
+- `uv sync --frozen` (install deps)
+
+##  OR Activate VENV
 
 - Linux
 
@@ -21,3 +26,4 @@
 - `git status`
 - `git commit -m "initial commit"`
 - `git push -u origin develop`
+
