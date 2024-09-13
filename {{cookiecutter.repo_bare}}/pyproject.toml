@@ -1,12 +1,17 @@
 # See https://peps.python.org/pep-0621/
 
 [project]
-keywords = [{{cookiecutter.keywords}}]
-authors = [{ email = 'news1@vansteenwegen.org', name = 'Dieter Vansteenwegen' }]
 name = '{{cookiecutter.module_name}}' # No_spaces_allowed
+authors = [{ email = 'news1@vansteenwegen.org', name = 'Dieter Vansteenwegen' }]
 readme = 'README.md'
 version = '0.1.0'
 description = '{{cookiecutter.project_description}}'
+keywords = [{{cookiecutter.keywords}}]
+dependencies = [
+    "pytz>=2024.2", 
+    {% if cookiecutter.add_gui %}"PyQt5",{% endif %}
+]
+
 license = { file = 'LICENSE' }
 classifiers = [
     'Development Status :: 4 - Beta',
