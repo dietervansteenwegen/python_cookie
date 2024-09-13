@@ -12,15 +12,7 @@ classifiers = [
     'Development Status :: 4 - Beta',
     'Programming Language :: Python',
 ]
-requires-python = ">3.5.2"
-dynamic = ["dependencies"]
-# version can also be set in the dynamic field to get it from a __version__ file. Add  
-# version = { attr = "package.__version__" }
-# to [tool.setuptools.dynamic]
-
-# dependencies = [
-
-# ]
+requires-python = ">=3.7"
 
 [project.urls]
 Homepage = 'https://boxfish.be'
@@ -29,26 +21,22 @@ Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/b
 # Documentation = 'https://readthedocs.org'
 
 [project.scripts]
-
 {{cookiecutter.module_name}} = 'main:main'
 
-[project.gui-scripts]
-{% if cookiecutter.add_gui %}
+{% if cookiecutter.add_gui %}[project.gui-scripts]
 {{cookiecutter.module_name}}-gui = "main:main"
-{% endif %}
-
 [project.optional-dependencies]
-{% if cookiecutter.add_gui %}
+gui = ['PyQt5']{% endif %}
 
-{% endif %}
-
-gui = ['PyQt5']
 [build-system]
 requires = ['setuptools', 'setuptools-scm']
-# build-backend = 'setuptools.build.meta'
+build-backend = 'setuptools.build.meta'
 
-[tool.setuptools.dynamic]
-dependencies = { file = ["requirements.txt"] }
+[tool.uv]
+dev-dependencies = ["pre-commit>=2.20.0"]
+
+# [tool.setuptools.dynamic]
+# dependencies = { file = ["requirements.txt"] }
 
 [tool.setuptools.packages.find]
 where = ['src'] # list of folders that contain the packages (['.'] by default)
