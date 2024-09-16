@@ -8,8 +8,8 @@ version = '0.1.0'
 description = '{{cookiecutter.project_description}}'
 keywords = [{{cookiecutter.keywords}}]
 dependencies = [
-    "pytz>=2024.2", 
     {% if cookiecutter.add_gui %}"PyQt5",{% endif %}
+    {% if cookiecutter.require_config_file %}"tomli",{% endif %}
 ]
 
 license = { file = 'LICENSE' }
@@ -39,6 +39,9 @@ build-backend = 'setuptools.build.meta'
 
 [tool.uv]
 dev-dependencies = ["pre-commit>=2.20.0"]
+
+[tool.uv.pip]
+generate-hashes = True
 
 # [tool.setuptools.dynamic]
 # dependencies = { file = ["requirements.txt"] }

@@ -13,7 +13,6 @@ import logging.handlers
 from pathlib import Path
 from typing import Union
 
-import pytz
 {% if cookiecutter.add_gui %}
 from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import (QDesktopWidget, QDialog, QHBoxLayout,
