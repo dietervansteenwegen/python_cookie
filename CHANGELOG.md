@@ -1,7 +1,5 @@
 # Python cookiecutter template CHANGELOG
 
-
-
 ## 18/06/2024
 
 - use toml for config file
@@ -16,7 +14,8 @@
 ## 08/10/2024
 
 - feat: Add exception hook for GUI use
-
+- chore: Change email adress to <github@vansteenwegen.org>
+- build: Upgrade to Python 3.12.6
 
 ## TODO
 
