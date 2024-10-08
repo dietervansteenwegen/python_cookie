@@ -35,13 +35,13 @@ gui = ['PyQt5']{% endif %}
 
 [build-system]
 requires = ['setuptools', 'setuptools-scm']
-build-backend = 'setuptools.build.meta'
+# build-backend = 'setuptools.build.meta'
 
 [tool.uv]
 dev-dependencies = ["pre-commit>=2.20.0"]
 
 [tool.uv.pip]
-generate-hashes = True
+generate-hashes = true
 
 # [tool.setuptools.dynamic]
 # dependencies = { file = ["requirements.txt"] }
