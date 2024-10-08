@@ -10,9 +10,23 @@ from config.config import Config
 from {{cookiecutter.module_name}} import {{cookiecutter.class_name}}
 from log.log import add_rotating_file, setup_logger
 {% if cookiecutter.add_gui -%}
+import sys
 from gui.gui import start_gui
+import logging
+
+def excepthook(exc_type, exc_value, exc_tb) -> None:
+    log=logging.getLogger()
+    tabbed_msg: list[str] =[
+        i.replace('\n', '\t').replace(' ', '')
+        for i in traceback.format_exception(exc_type, exc_value, exc_tb) 
+        ]
+    for msg in tabbed_msg:
+        log.error(msg)
+        print(msg)
+
 
 def gui():
+    sys.excepthook = excepthook
     start_gui()
 {%- endif %}
 

@@ -1,5 +1,7 @@
 # Python cookiecutter template CHANGELOG
 
+
+
 ## 18/06/2024
 
 - use toml for config file
@@ -11,6 +13,11 @@
 - Add tomli package to pyproject.toml
 - Added `generate-hashes = True` to pip section of uv tool settings.
 
+## 08/10/2024
+
+- feat: Add exception hook for GUI use
+
+
 ## TODO
 
-- When migrating to Python >=3.9: use `zoneinfo` library for timezon information.
+- When migrating to Python >=3.9: use `zoneinfo` library for timezone information.
