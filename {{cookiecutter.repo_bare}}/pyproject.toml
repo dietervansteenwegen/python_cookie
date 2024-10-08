@@ -2,7 +2,7 @@
 
 [project]
 name = '{{cookiecutter.module_name}}' # No_spaces_allowed
-authors = [{ email = 'news1@vansteenwegen.org', name = 'Dieter Vansteenwegen' }]
+authors = [{ email = 'github@vansteenwegen.org', name = 'Dieter Vansteenwegen' }]
 readme = 'README.md'
 version = '0.1.0'
 description = '{{cookiecutter.project_description}}'
