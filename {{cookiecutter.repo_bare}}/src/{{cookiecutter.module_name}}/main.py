@@ -6,13 +6,14 @@ __author__ = 'Dieter Vansteenwegen'
 __project__ = '{{cookiecutter.project_name}}'
 __project_link__ = '{{cookiecutter.project_link}}'
 
-from config.config import Config
-from {{cookiecutter.module_name}} import {{cookiecutter.class_name}}
-from log.log import add_rotating_file, setup_logger
+from {{cookiecutter.module_name}}.config import Config
+from {{cookiecutter.module_name}}.{{cookiecutter.module_name}} import {{cookiecutter.class_name}}
+from {{cookiecutter.module_name}}.log import add_rotating_file, setup_logger
 {% if cookiecutter.add_gui -%}
 import sys
 from gui.gui import start_gui
 import logging
+import traceback
 
 def excepthook(exc_type, exc_value, exc_tb) -> None:
     log=logging.getLogger()

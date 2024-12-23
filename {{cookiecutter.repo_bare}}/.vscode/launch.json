@@ -8,7 +8,7 @@
             "name": "Run main using toml config file",
             "type": "debugpy",
             "request": "launch",
-            "program": "src/main.py",
+            "program": "src/{{cookiecutter.module_name}}/main.py",
             "console": "integratedTerminal",
             "args": [
                 "-c",

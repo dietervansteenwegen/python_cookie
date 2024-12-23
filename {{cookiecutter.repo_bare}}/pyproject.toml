@@ -1,16 +1,18 @@
 # See https://peps.python.org/pep-0621/
 
 [project]
-name = '{{cookiecutter.module_name}}' # No_spaces_allowed
-authors = [{ email = 'github@vansteenwegen.org', name = 'Dieter Vansteenwegen' }]
-readme = 'README.md'
-version = '0.1.0'
-description = '{{cookiecutter.project_description}}'
 keywords = [{{cookiecutter.keywords}}]
 dependencies = [
     {% if cookiecutter.add_gui %}"PyQt5",{% endif %}
     {% if cookiecutter.require_config_file %}"tomli",{% endif %}
 ]
+name = '{{cookiecutter.module_name}}' # No_spaces_allowed
+authors = [
+    { email = 'github@vansteenwegen.org', name = 'Dieter Vansteenwegen' },
+]
+readme = 'README.md'
+version = '0.1.0'
+description = '{{cookiecutter.project_description}}'
 
 license = { file = 'LICENSE' }
 classifiers = [
@@ -26,7 +28,7 @@ Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/b
 # Documentation = 'https://readthedocs.org'
 
 [project.scripts]
-{{cookiecutter.module_name}} = 'main:main'
+{{cookiecutter.module_name}} = '{{cookiecutter.module_name}}.main:main'
 
 {% if cookiecutter.add_gui %}[project.gui-scripts]
 {{cookiecutter.module_name}}-gui = "main:main"
@@ -49,7 +51,7 @@ generate-hashes = true
 [tool.setuptools.packages.find]
 where = ['src'] # list of folders that contain the packages (['.'] by default)
 include = [
-    # 'package_dir',
+    '{{cookiecutter.module_name}}',
 ] # package names should match these glob patterns (['*'] by default)
 # exclude = ['my_package.tests*'] # exclude packages matching these glob patterns (empty by default)
 
