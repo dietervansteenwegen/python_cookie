@@ -11,12 +11,9 @@ __pycache__/
 build/
 dist/
 sdist/
-var/
 wheels/
 *.egg-info/
-.installed.cfg
 *.egg
-MANIFEST
 
 # Flask stuff:
 instance/
@@ -36,7 +33,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
-*.pyc
 
 ### zip files ###
 *.zip
@@ -50,7 +46,6 @@ credentials*
 !.vscode/tasks.json
 !.vscode/launch.json
 # !.vscode/extensions.json
-# workspace.code-workspace
 
 ### Ruff files ###
 .ruff_cache/

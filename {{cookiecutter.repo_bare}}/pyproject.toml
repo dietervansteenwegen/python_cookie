@@ -1,25 +1,27 @@
 # See https://peps.python.org/pep-0621/
 
 [project]
-keywords = [{{cookiecutter.keywords}}]
+name = '{{cookiecutter.module_name}}' # No_spaces_allowed
+description = '{{cookiecutter.project_description}}'
+readme = 'README.md'
+license = { file = 'LICENSE' }
+requires-python = ">=3.12.6"
 dependencies = [
     {% if cookiecutter.add_gui %}"PyQt5",{% endif %}
     {% if cookiecutter.require_config_file %}"tomli",{% endif %}
+    "tomli>=2.2.1",
 ]
-name = '{{cookiecutter.module_name}}' # No_spaces_allowed
 authors = [
-    { email = 'github@vansteenwegen.org', name = 'Dieter Vansteenwegen' },
+    { name = 'Dieter Vansteenwegen',email = 'github@vansteenwegen.org'},
 ]
-readme = 'README.md'
-version = '0.1.0'
-description = '{{cookiecutter.project_description}}'
 
-license = { file = 'LICENSE' }
 classifiers = [
     'Development Status :: 4 - Beta',
     'Programming Language :: Python',
 ]
-requires-python = ">=3.12.6"
+
+keywords = [{{cookiecutter.keywords}}]
+version = 'v0.1.0'
 
 [project.urls]
 Homepage = 'https://boxfish.be'
@@ -28,7 +30,7 @@ Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/b
 # Documentation = 'https://readthedocs.org'
 
 [project.scripts]
-{{cookiecutter.module_name}} = '{{cookiecutter.module_name}}.main:main'
+{{cookiecutter.module_name}} = '{{cookiecutter.module_name}}.__main__:run'
 
 {% if cookiecutter.add_gui %}[project.gui-scripts]
 {{cookiecutter.module_name}}-gui = "main:main"
@@ -37,7 +39,7 @@ gui = ['PyQt5']{% endif %}
 
 [build-system]
 requires = ['setuptools', 'setuptools-scm']
-# build-backend = 'setuptools.build.meta'
+build-backend = 'setuptools.build.meta'
 
 [tool.uv]
 dev-dependencies = ["pre-commit>=2.20.0"]
@@ -61,6 +63,7 @@ exclude_dirs = ["tests"]
 # skips = ["B101", "B601"]
 
 [tool.ruff]
+target-version = "py310"
 exclude = [
     ".bzr",
     ".direnv",
@@ -142,6 +145,9 @@ unfixable = []
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.per-file-ignores]
+# "docs/conf.py" = ["D100", "D101", "D105"]
 
 [tool.ruff.format]
 quote-style = "single"

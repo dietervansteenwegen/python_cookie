@@ -9,9 +9,8 @@ __project_link__ = '{{cookiecutter.project_link}}'
 from {{cookiecutter.module_name}}.config import Config
 from {{cookiecutter.module_name}}.{{cookiecutter.module_name}} import {{cookiecutter.class_name}}
 from {{cookiecutter.module_name}}.log import add_rotating_file, setup_logger
-{% if cookiecutter.add_gui -%}
 import sys
-from gui.gui import start_gui
+{% if cookiecutter.add_gui -%}from gui.gui import start_gui
 import logging
 import traceback
 
@@ -26,10 +25,9 @@ def excepthook(exc_type, exc_value, exc_tb) -> None:
         print(msg)
 
 
-def gui():
+def gui(conf):
     sys.excepthook = excepthook
-    start_gui()
-{%- endif %}
+    start_gui(conf){%- endif %}
 
 def _setup_log():
     """Set up logging."""    
@@ -37,18 +35,16 @@ def _setup_log():
     add_rotating_file(log)
     return log
 
-
-def main():
-    conf = Config()
-    conf.get_config()
-    {% if cookiecutter.add_gui %}
-    gui()
-    {% else %}
-    {{cookiecutter.class_name}}(conf)
-    {% endif %}
-
 log = _setup_log()
 log.info('Starting {{cookiecutter.project_name}}')
 
+def run():
+    conf = Config()
+    conf.get_config()
+    {% if cookiecutter.add_gui %}
+    gui(conf){% else %}{{cookiecutter.class_name}}(conf)
+    {% endif %}
+
+
 if __name__ == '__main__':
-    main()
+    sys.exit(run())

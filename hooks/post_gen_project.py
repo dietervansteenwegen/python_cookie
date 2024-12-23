@@ -222,7 +222,7 @@ rm('config.toml')
 ############################
 {% if not cookiecutter.add_gui %}
 print('--> cleaning up GUI...', end = '', flush = True)
-rmdir('src/gui')
+rmdir('src/{{cookiecutter.module_name}}/gui')
 rmdir('assets/gui_sources')
 print(' Done!')
 {% endif %}
