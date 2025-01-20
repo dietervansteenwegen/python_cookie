@@ -1,8 +1,5 @@
 # README
 
-## Post deploy
+## How to use this?
 
-- create venv (uv venv venv)
-- uv sync?
-- test exe
-- install pre-commit?
+Use `cruft create https://www.github.com/dietervansteenwegen/python_cookie.git` to generate a template.
