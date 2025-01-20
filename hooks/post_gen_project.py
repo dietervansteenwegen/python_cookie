@@ -261,6 +261,7 @@ if to_log:
     print_formatted('')
     print_formatted('Check output logs in  "{{cookiecutter.repo_bare}}/cookiecutter.log"')
     print_formatted('')
-    print_formatted('Run \'uv sync\' and activate .venv to start developing.')
+    print_formatted('Run \'make install\' and activate .venv to start developing.')
+    print_formatted('Run \'uv tool install .\' to install system-wide.')
 print_formatted('Create remote repository dietervansteenwegen/{{cookiecutter.repo_bare}}.git')
 print('*' * 99)
