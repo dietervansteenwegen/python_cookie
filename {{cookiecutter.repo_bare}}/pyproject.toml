@@ -1,18 +1,17 @@
 # See https://peps.python.org/pep-0621/
 
 [project]
+dependencies = [
+    {%- if cookiecutter.add_gui %}"PyQt5",{%- endif %}
+    {%- if cookiecutter.use_config_file -%}"tomli>=2.2.1",{%- endif %}
+]
 name = '{{cookiecutter.module_name}}' # No_spaces_allowed
 description = '{{cookiecutter.project_description}}'
 readme = 'README.md'
 license = { file = 'LICENSE' }
 requires-python = ">=3.12.6"
-dependencies = [
-    {% if cookiecutter.add_gui %}"PyQt5",{% endif %}
-    {% if cookiecutter.require_config_file %}"tomli",{% endif %}
-    "tomli>=2.2.1",
-]
 authors = [
-    { name = 'Dieter Vansteenwegen',email = 'github@vansteenwegen.org'},
+    { name = 'Dieter Vansteenwegen', email = 'github@vansteenwegen.org' },
 ]
 
 classifiers = [
@@ -30,25 +29,26 @@ Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/b
 # Documentation = 'https://readthedocs.org'
 
 [project.scripts]
-{{cookiecutter.module_name}} = '{{cookiecutter.module_name}}.__main__:run'
+{{cookiecutter.module_name}}_cli = '{{cookiecutter.module_name}}.__main__:run'
 
-{% if cookiecutter.add_gui %}[project.gui-scripts]
-{{cookiecutter.module_name}}-gui = "main:main"
+{% if cookiecutter.add_gui -%}[project.gui-scripts]
+{{cookiecutter.module_name}}-gui = '{{cookiecutter.module_name}}.cli:run'
+
 [project.optional-dependencies]
-gui = ['PyQt5']{% endif %}
+gui = ['PyQt5']{%- endif %}
 
 [build-system]
-requires = ['setuptools', 'setuptools-scm']
-build-backend = 'setuptools.build.meta'
+requires = ['setuptools >= 61.0']
+build-backend = 'setuptools.build_meta'
 
 [tool.uv]
-dev-dependencies = ["pre-commit>=2.20.0"]
+dev-dependencies = ["pre-commit>=2.20.0", "{{cookiecutter.module_name}}"]
 
 [tool.uv.pip]
 generate-hashes = true
 
-# [tool.setuptools.dynamic]
-# dependencies = { file = ["requirements.txt"] }
+[tool.uv.sources]
+{{cookiecutter.module_name}} = { workspace = true }
 
 [tool.setuptools.packages.find]
 where = ['src'] # list of folders that contain the packages (['.'] by default)
@@ -130,13 +130,15 @@ ignore = [
     "TRY400",
     # Raising and catching exceptions in the same block may lead to confusion
     "TRY301",
-{% if cookiecutter.add_gui %}
+    # Do not run missing-trailing-comma together with formatter (see https://docs.astral.sh/ruff/rules/missing-trailing-comma/#formatter-compatibility)
+    "COM812",
+{% if cookiecutter.add_gui -%}
     # PyQT doesn't adhere to or works well with N801/N802/N803/N813
     "N801",   
     "N802",
     "N803",
     "N813",
-{% endif %}
+{%- endif %}
 ]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.

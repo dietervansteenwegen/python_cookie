@@ -6,9 +6,8 @@ __author__ = 'Dieter Vansteenwegen'
 __project__ = '{{cookiecutter.project_name}}'
 __project_link__ = '{{cookiecutter.project_link}}'
 
-from {{cookiecutter.module_name}}.config import Config
-from {{cookiecutter.module_name}}.{{cookiecutter.module_name}} import {{cookiecutter.class_name}}
-from {{cookiecutter.module_name}}.log import add_rotating_file, setup_logger
+"""Main entry point for ``python -m {{cookiecutter.module_name}}``."""
+
 import sys
 {% if cookiecutter.add_gui -%}from gui.gui import start_gui
 import logging
@@ -27,24 +26,12 @@ def excepthook(exc_type, exc_value, exc_tb) -> None:
 
 def gui(conf):
     sys.excepthook = excepthook
-    start_gui(conf){%- endif %}
+    start_gui(conf)
+{% else %}
+import {{cookiecutter.module_name}}.cli
+{%- endif %}
 
-def _setup_log():
-    """Set up logging."""    
-    log = setup_logger()
-    add_rotating_file(log)
-    return log
-
-log = _setup_log()
-log.info('Starting {{cookiecutter.project_name}}')
-
-def run():
-    conf = Config()
-    conf.get_config()
-    {% if cookiecutter.add_gui %}
-    gui(conf){% else %}{{cookiecutter.class_name}}(conf)
-    {% endif %}
-
-
-if __name__ == '__main__':
-    sys.exit(run())
+try:
+    sys.exit({{cookiecutter.module_name}}.cli.run())
+except KeyboardInterrupt:
+    sys.exit(1)

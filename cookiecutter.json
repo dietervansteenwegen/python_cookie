@@ -6,12 +6,10 @@
     "class_name": "ClassName",
     "project_description": "",
     "keywords": "",
-    "require_config_file": false,
+    "use_config_file": false,
     "add_documentation": false,
     "add_gui": false,
     "create_assets_dir": false,
-    "create_venv": true,
-    "init_git": true,
     "__prompts__": {
         "project_name": "Project name (used in README.md and headers)",
         "repo_bare": "Repository name without '.git' suffix",
@@ -21,10 +19,8 @@
         "project_description": "One line project description",
         "add_gui": "Add PyQT gui templating?",
         "keywords": "Package keywords (list of strings)",
-        "require_config_file": "Require user to create and use a config file?",
+        "use_config_file": "Require user to create and use a config file?",
         "add_documentation": "Add Sphinx documenation?",
-        "create_assets_dir": "Create directory for assets?",
-        "create_venv": "Create a venv?",
-        "init_git": "Initialize a Git repository and switch to develop branch?"
+        "create_assets_dir": "Create directory for assets?"
     }
 }

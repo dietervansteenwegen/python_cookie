@@ -1,6 +1,6 @@
 # {{cookiecutter.project_name}}
 
-> {{cookiecutter.project_description}}
+>{{cookiecutter.project_description}}
 
 See my [website](boxfish.be) for information on the project and hardware.
 

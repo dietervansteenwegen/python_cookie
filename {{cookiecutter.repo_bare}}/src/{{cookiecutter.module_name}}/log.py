@@ -12,21 +12,14 @@ import logging
 import logging.handlers
 from pathlib import Path
 from typing import Union
-
-{% if cookiecutter.add_gui %}
-from PyQt5.QtGui import QFont
+{% if cookiecutter.add_gui -%}from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import (QDesktopWidget, QDialog, QHBoxLayout,
-                             QPlainTextEdit)
-{% endif %}
+                             QPlainTextEdit){%- endif %}
+
 
 LOG_FMT = (
-    '%(asctime)s|%(levelname)-8.8s|%(module)-15.15s|%(lineno)-0.4d|'
-    '%(funcName)-20.20s|%(message)s|'
+    '%(asctime)s|%(levelname)-8.8s|%(module)-15.15s|%(lineno)-0.4d|%(funcName)-20.20s|%(message)s|'
 )
-# LOG_FMT = (
-#     '%(asctime)s|%(levelname)-8.8s|%(thread)-18.18d|%(threadName)s|%(module)-15.15s|'
-#     '%(lineno)-0.4d|%(funcName)-20.20s|%(message)s|'
-# )
 DATEFMT = '%d/%m/%Y %H:%M:%S'
 LOGFILE = './logs/logfile.log'
 LOG_FILE_MAX_BYTES = 1000000
@@ -55,7 +48,6 @@ class MilliSecondsFormatter(logging.Formatter):
             str: formatted timestamp for LogRecord
         """
         ct = dt.datetime.fromtimestamp(record.created).astimezone(TZ_UTC)
-        # sourcery skip: lift-return-into-if, remove-unnecessary-else
         if datefmt:
             s = ct.strftime(datefmt)
         else:
@@ -66,7 +58,9 @@ class MilliSecondsFormatter(logging.Formatter):
 
 def setup_logger() -> logging.Logger:
     """Setup logging.
-    Returns logger object with (at least) 1 streamhandler to stdout.
+
+    Returns logging.Logger object with  1 streamhandler (to stdout).
+    This handler has a level of CONSOLE_LOG_LEVEL uses MilliSecondsFormatter(LOG_FMT).
 
     Returns:
         logging.Logger: configured logger object
@@ -117,7 +111,7 @@ def add_rotating_file(logger: logging.Logger) -> None:
     rot_fil_handler.setFormatter(MilliSecondsFormatter(LOG_FMT))
     logger.addHandler(rot_fil_handler)
 
-{% if cookiecutter.add_gui %}
+{%- if cookiecutter.add_gui -%}
 class QTLogHandler(logging.Handler):
     """Logging handler for the QT logging dialog box.
 
@@ -163,4 +157,4 @@ class DialogLog(QDialog):
         self.move(0, y)
         log_text_box = QTLogHandler(self)
         logging.getLogger().addHandler(log_text_box)
-{% endif %}
+{%- endif %}

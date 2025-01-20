@@ -3,9 +3,9 @@
 # vim: ts=4:sw=4:expandtab:cuc:autoindent:ignorecase:colorcolumn=99
 
 REQUIRED_PACKAGES: list = [
-    "pipx",
-    "ruff",
-    "pre-commit",
+    "uv",
+#     "ruff",
+#     "pre-commit",
 ]
 
 print("\n---> This template requires the following packages and tools to be installed:")

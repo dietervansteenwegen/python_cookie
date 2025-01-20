@@ -3,14 +3,13 @@
 ## Must do
 
 - Check if ran with `cruft create` command
-- Pre init: install `UV` for VENV
-- Add VENV with `UV`
-- Add info as to what to do after init and venv:
-  - `uv add . -e --dev`
-- Change: `run()` starts command that creates class and start instead of creating class
-- Check if `pre-commit` hook is installed
 
 ## Nice-To-Have
 
-- `pre-commit autoupdate` as post hook
+- check [Jinja whitespace control](https://ttl255.com/jinja2-tutorial-part-3-whitespace-control/)
 - `cruft update` as make recipe
+- `dev-dependencies = ["cruft-test",`
+
+## Now
+
+- docstrings

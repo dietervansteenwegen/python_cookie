@@ -8,13 +8,13 @@ __project__ = '{{cookiecutter.project_name}}'
 __project_link__ = '{{cookiecutter.project_link}}'
 import argparse
 import logging
-from pathlib import Path
+{% if cookiecutter.use_config_file -%}import tomli
+from pathlib import Path{%- endif %}
 from typing import Union
 
-import tomli
+PROGRAM_DESCRIPTION: str = '{{cookiecutter.project_name}}'
 
 log = logging.getLogger(__name__)
-PROGRAM_DESCRIPTION: str = '{{cookiecutter.project_name}}'
 
 
 def get_arguments() -> argparse.Namespace:
@@ -27,9 +27,8 @@ def get_arguments() -> argparse.Namespace:
     Returns:
         argparse.Namespace: Namespace containing the parsed arguments
     """
-    {%if- cookiecutter.require_config_file -%}
-
     ## ADD REQUIRED ARG BELOW THIS GROUP. OPTIONAL ABOVE...
+    {%if cookiecutter.use_config_file -%}
     required_args = parser.add_argument_group('Required arguments')
     required_args.add_argument(
         '-c',
@@ -38,67 +37,63 @@ def get_arguments() -> argparse.Namespace:
         action='store',
         dest='config_file',
         required=True,
-    )
-
-    {%- else -%}
-
-    parser.add_argument(
-        '-c',
-        '--config_file',
-        help='Location of the config file functionality.',
-        action='store',
-        dest='config_file',
-        required=False,
-    )
-    ## ADD REQUIRED ARG BELOW THIS GROUP. OPTIONAL ABOVE...
-    # required_args = parser.add_argument_group('Required arguments')
-    # required_args.add_argument(
-
-    {% endif %}
-
+    ){% else %}
+    #required_args = parser.add_argument_group('Required arguments')
+    {%- endif %}
     return parser.parse_args()
+
 
 class HelpfullArgumentParser(argparse.ArgumentParser):
     """ArgumentParser subclass with improved error feedback.
 
     Provides better error message to user.
-    """    
+    """
+
     def error(self, msg):
-        print('-'*80)
-        print(f'\nERROR: {msg}\n\n')
-        print('-'*80)
+        print('-' * 80)
+        print(f'ERROR: {msg}\n')
+        print('-' * 80)
         self.print_help()
 
-        {%if- cookiecutter.require_config_file -%}
         import sys
+
         sys.exit(-1)
-        {% endif %}
 
 
 class Config:
     def __init__(self):
-        self.arguments:Union[None|argparse.Namespace] = {}
+        """Parses arguments and optionally configuration file for the application."""
+        self.arguments: Union[None | argparse.Namespace] = {}
         self.config = None
 
     def get_config(self) -> None:
+        """Get configuration from arguments and optionally a configuration file.
+
+        If a config file is provided as one of the arguments, it will be read and stored 
+        in the config attribute.
+        """        
         self.arguments = get_arguments()
-        if hasattr(self.arguments, 'config_file') and self.arguments.config_file:
+        {% if cookiecutter.use_config_file -%}if hasattr(self.arguments, 'config_file') and self.arguments.config_file:
             self._read_config_file()
 
     def _read_config_file(self) -> None:
+        """Read the configuration file and store it in the config attribute.
+
+        Parses the config file from the self.arguments.config_file attribute.
+
+        Raises:
+            FileNotFoundError: If the given config file does not exist.
+        """        
         try:
             with Path(self.arguments.config_file).open(mode='rb') as f:
                 self.config: dict = tomli.load(f)
 
         except FileNotFoundError:
             err_msg = f'Config file {self.arguments.config_file} does not exist.'
-            raise FileNotFoundError(err_msg) from None
+            raise FileNotFoundError(err_msg) from None{%- endif %}
 
     def __str__(self) -> str:
         """String representation of the Config class."""
-
-        msg = (
-            f'Config with arguments {self.arguments} and config {self.config} '
-            f'from file [{self.arguments.config_file}]'
+        return (f'Config with arguments {self.arguments} and config {self.config} '
+            {% if cookiecutter.use_config_file %}f'from file [{self.arguments.config_file}]'{% endif %}
         )
-        return msg

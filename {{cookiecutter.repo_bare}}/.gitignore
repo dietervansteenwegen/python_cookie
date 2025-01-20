@@ -50,6 +50,10 @@ credentials*
 ### Ruff files ###
 .ruff_cache/
 
+### Environment files
+.env
+.env.*
+
 ### Own application logs
 *.log
 *.log.1

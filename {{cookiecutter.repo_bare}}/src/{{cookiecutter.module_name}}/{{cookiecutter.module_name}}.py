@@ -14,5 +14,5 @@ log = logging.getLogger(__name__)
 
 
 class {{cookiecutter.class_name}}:
-    def __init__(self, config:Config):
+    def __init__(self, config: Config):
         log.info(f'{{cookiecutter.class_name}} initialized. Config: {config}')
