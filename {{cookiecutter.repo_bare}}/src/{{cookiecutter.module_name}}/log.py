@@ -21,7 +21,7 @@ LOG_FMT = (
     '%(asctime)s|%(levelname)-8.8s|%(module)-15.15s|%(lineno)-0.4d|%(funcName)-20.20s|%(message)s|'
 )
 DATEFMT = '%d/%m/%Y %H:%M:%S'
-LOGFILE = './logs/logfile.log'
+LOGFILE = './logs/{{cookiecutter.module_name}}.log'
 LOG_FILE_MAX_BYTES = 1000000
 LOG_BACKUP_COUNT = 10
 TZ_UTC = dt.timezone.utc
