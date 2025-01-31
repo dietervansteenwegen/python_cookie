@@ -18,15 +18,16 @@ log = logging.getLogger(__name__)
 
 
 def get_arguments() -> argparse.Namespace:
-    parser = HelpfullArgumentParser(
-        add_help=True,
-        description=PROGRAM_DESCRIPTION,
-    )
     """Parse  and evaluate the supplied arguments.
 
     Returns:
         argparse.Namespace: Namespace containing the parsed arguments
     """
+    parser = HelpfullArgumentParser(
+        add_help=True,
+        description=PROGRAM_DESCRIPTION,
+    )
+    # parser.add_argument('arg', nargs='*', help='Positional argument')
     ## ADD REQUIRED ARG BELOW THIS GROUP. OPTIONAL ABOVE...
     {%if cookiecutter.use_config_file -%}
     required_args = parser.add_argument_group('Required arguments')

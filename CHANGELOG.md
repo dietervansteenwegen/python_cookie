@@ -3,8 +3,9 @@
 ## Not released yet
 
 - feature: Don't stage `todo.md` for commit
-- fix: Move imports to beginning of file
+- bug: Move imports to beginning of file
 - bug: Correct wrong indentation of post-op feedback
+- bug: Put docstring at start of function
 
 ## v0.1.0 (20/01/2025)
 
