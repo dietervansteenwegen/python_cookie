@@ -6,13 +6,14 @@ __author__ = 'Dieter Vansteenwegen'
 __project__ = '{{cookiecutter.project_name}}'
 __project_link__ = '{{cookiecutter.project_link}}'
 
-"""Main entry point for ``python -m {{cookiecutter.module_name}}``."""
-
 import sys
-{% if cookiecutter.add_gui -%}from gui.gui import start_gui
+{% if cookiecutter.add_gui -%}from gui.gui import start_gui{%- endif %}
 import logging
 import traceback
 
+"""Main entry point for ``python -m {{cookiecutter.module_name}}``."""
+
+{% if cookiecutter.add_gui -%}
 def excepthook(exc_type, exc_value, exc_tb) -> None:
     log=logging.getLogger()
     tabbed_msg: list[str] =[

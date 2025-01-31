@@ -3,6 +3,8 @@
 ## Not released yet
 
 - feature: Don't stage `todo.md` for commit
+- fix: Move imports to beginning of file
+- bug: Correct wrong indentation of post-op feedback
 
 ## v0.1.0 (20/01/2025)
 
