@@ -4,7 +4,8 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {% if cookiecutter.use_config_file -%}
+        {% if cookiecutter.use_config_file -%
+        }
         {
             "name": "Run main using toml config file",
             "type": "debugpy",
@@ -17,15 +18,21 @@
                 "config.toml"
             ]
         }
-        {%- else -%}
+        {%- else -%
+        }
         {
             "name": "Run main",
             "type": "debugpy",
             "request": "launch",
             // "program": "src/{{cookiecutter.module_name}}/__main__.py",
             "module": "{{cookiecutter.module_name}}",
+            // "args": [
+            //     "--src_fn",
+            //     "./src.csv"
+            // ],
             "console": "integratedTerminal"
         }
-        {%- endif -%}
+        {%- endif -%
+        }
     ]
 }

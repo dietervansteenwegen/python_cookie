@@ -2,6 +2,7 @@
 
 ## Not released yet
 
+- docs: Add documentation for argparse
 - feature: Don't stage `todo.md` for commit
 - bug: Move imports to beginning of file
 - bug: Correct wrong indentation of post-op feedback

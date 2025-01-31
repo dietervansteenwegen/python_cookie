@@ -40,6 +40,10 @@ def get_arguments() -> argparse.Namespace:
         required=True,
     ){% else %}
     #required_args = parser.add_argument_group('Required arguments')
+    # required_args.add_argument(
+    #     '--src_fn',
+    #     help='Source CSV to process.',
+    # )
     {%- endif %}
     return parser.parse_args()
 
