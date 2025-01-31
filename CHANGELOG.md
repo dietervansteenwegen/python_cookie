@@ -1,5 +1,9 @@
 # Python cookiecutter template CHANGELOG
 
+## Not released yet
+
+- feature: Don't stage `todo.md` for commit
+
 ## v0.1.0 (20/01/2025)
 
 - feat: Migrate from `PIP` and `VENV` to  `UV`

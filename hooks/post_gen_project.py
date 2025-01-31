@@ -235,6 +235,7 @@ run_command('git init --quiet')
 run_command('git remote add origin git_prive:dietervansteenwegen/{{cookiecutter.repo_bare}}.git')
 run_command('git checkout -b develop --quiet')
 run_command('git add *')
+run_command('git reset -- todo.md')
 print(' Done!')
 
 ############################
