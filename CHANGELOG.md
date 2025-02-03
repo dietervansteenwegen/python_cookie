@@ -7,6 +7,8 @@
 - bug: Move imports to beginning of file
 - bug: Correct wrong indentation of post-op feedback
 - bug: Put docstring at start of function
+- fix: Correct autoformat breaking Jinja parsing
+- feature: put log files in user home directory
 
 ## v0.1.0 (20/01/2025)
 
