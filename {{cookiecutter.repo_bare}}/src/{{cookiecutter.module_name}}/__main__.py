@@ -7,12 +7,11 @@ __project__ = '{{cookiecutter.project_name}}'
 __project_link__ = '{{cookiecutter.project_link}}'
 
 import sys
-{% if cookiecutter.add_gui -%}from .gui.gui import start_gui{%- endif %}
+{% if cookiecutter.add_gui %}from .gui.gui import start_gui
 import logging
 import traceback
-{% if not cookiecutter.add_gui -%}
-from .cli import run
-{%- endif %}
+{% else -%}
+from .cli import run{%- endif %}
 
 """Main entry point for ``python -m {{cookiecutter.module_name}}``."""
 
@@ -31,10 +30,9 @@ def excepthook(exc_type, exc_value, exc_tb) -> None:
 def gui(conf):
     sys.excepthook = excepthook
     start_gui(conf)
-{% else %}
+{%- else -%}
 try:
     sys.exit(run())
 except KeyboardInterrupt:
     sys.exit(1)
-{%- endif %}
-
+{% endif -%}

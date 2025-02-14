@@ -11,18 +11,18 @@ import datetime as dt
 import logging
 import logging.handlers
 from pathlib import Path
-import pathlib
 from typing import Union
-{% if cookiecutter.add_gui -%}from PyQt5.QtGui import QFont
+{% if cookiecutter.add_gui -%}
+from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import (QDesktopWidget, QDialog, QHBoxLayout,
-                             QPlainTextEdit){%- endif %}
-
+                             QPlainTextEdit)
+{%- endif %}
 
 LOG_FMT = (
     '%(asctime)s|%(levelname)-8.8s|%(module)-15.15s|%(lineno)-0.4d|%(funcName)-20.20s|%(message)s|'
 )
 DATEFMT = '%d/%m/%Y %H:%M:%S'
-LOGFILE = Path(Path.home(),'logs', '{{cookiecutter.module_name}}.log')
+LOGFILE = Path(Path.home(), 'logs', '{{cookiecutter.module_name}}.log')
 LOG_FILE_MAX_BYTES = 1000000
 LOG_BACKUP_COUNT = 10
 TZ_UTC = dt.timezone.utc
@@ -112,7 +112,7 @@ def add_rotating_file(logger: logging.Logger) -> None:
     rot_fil_handler.setFormatter(MilliSecondsFormatter(LOG_FMT))
     logger.addHandler(rot_fil_handler)
 
-{%- if cookiecutter.add_gui -%}
+{% if cookiecutter.add_gui -%}
 class QTLogHandler(logging.Handler):
     """Logging handler for the QT logging dialog box.
 
@@ -158,4 +158,4 @@ class DialogLog(QDialog):
         self.move(0, y)
         log_text_box = QTLogHandler(self)
         logging.getLogger().addHandler(log_text_box)
-{%- endif %}
+{% endif -%}

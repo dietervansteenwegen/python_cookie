@@ -26,6 +26,4 @@ def run():
     """Main command line entry point."""
     conf = Config()
     conf.get_config()
-    {% if cookiecutter.add_gui -%}
-    gui(conf){% else %}{{cookiecutter.class_name}}(conf)
-    {%- endif %}
+    {% if cookiecutter.add_gui %}gui(conf){% else %}{{cookiecutter.class_name}}(conf){% endif %}
