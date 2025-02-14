@@ -10,6 +10,9 @@ import sys
 {% if cookiecutter.add_gui -%}from gui.gui import start_gui{%- endif %}
 import logging
 import traceback
+{% if not cookiecutter.add_gui -%}
+import {{cookiecutter.module_name}}.cli
+{%- endif %}
 
 """Main entry point for ``python -m {{cookiecutter.module_name}}``."""
 
@@ -29,10 +32,9 @@ def gui(conf):
     sys.excepthook = excepthook
     start_gui(conf)
 {% else %}
-import {{cookiecutter.module_name}}.cli
-{%- endif %}
-
 try:
     sys.exit({{cookiecutter.module_name}}.cli.run())
 except KeyboardInterrupt:
     sys.exit(1)
+{%- endif %}
+
