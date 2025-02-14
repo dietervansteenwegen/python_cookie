@@ -8,7 +8,7 @@ __project_link__ = '{{cookiecutter.project_link}}'
 
 import logging
 
-from {{cookiecutter.module_name}}.config import Config
+from .config import Config
 
 log = logging.getLogger(__name__)
 
