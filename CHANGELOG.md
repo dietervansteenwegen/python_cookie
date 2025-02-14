@@ -9,6 +9,9 @@
 - bug: Put docstring at start of function
 - fix: Correct autoformat breaking Jinja parsing
 - feature: put log files in user home directory
+- fix: Correct transitive dependency and absolute import
+- feature: Extend the `prep` make recipe (Add lockfile sync, deptry and dead)
+- feature: Add python version 3.12 for UV
 
 ## v0.1.0 (20/01/2025)
 
