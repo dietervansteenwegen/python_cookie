@@ -17,6 +17,11 @@ authors = [
 classifiers = [
     'Development Status :: 4 - Beta',
     'Programming Language :: Python',
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: Microsoft :: Windows :: Windows 11",
+    "Operating System :: POSIX :: Linux",
 ]
 
 keywords = [{{cookiecutter.keywords}}]
@@ -35,14 +40,20 @@ Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/b
 {{cookiecutter.module_name}}-gui = '{{cookiecutter.module_name}}.cli:run'
 
 [project.optional-dependencies]
-gui = ['PyQt5']{%- endif %}
+gui = ['PyQt6']{%- endif %}
 
 [build-system]
 requires = ['setuptools >= 61.0']
 build-backend = 'setuptools.build_meta'
 
 [tool.uv]
-dev-dependencies = ["pre-commit>=2.20.0", "{{cookiecutter.module_name}}"]
+dev-dependencies = [
+    "{{cookiecutter.module_name}}",
+    "pre-commit>=4.1.0",
+    "deptry>=0.22.0",
+    "ruff>=0.9.6",
+    "dead>=2.1.0",
+]
 
 [tool.uv.pip]
 generate-hashes = true
