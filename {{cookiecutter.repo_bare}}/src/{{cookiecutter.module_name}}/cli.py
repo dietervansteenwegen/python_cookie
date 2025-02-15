@@ -6,9 +6,9 @@ __author__ = 'Dieter Vansteenwegen'
 __project__ = '{{cookiecutter.project_name}}'
 __project_link__ = '{{cookiecutter.project_link}}'
 
-from {{cookiecutter.module_name}}.config import Config
-from {{cookiecutter.module_name}}.log import add_rotating_file, setup_logger
-from {{cookiecutter.module_name}}.{{cookiecutter.module_name}} import {{cookiecutter.class_name}}
+from .config import Config
+from .log import add_rotating_file, setup_logger
+from .{{cookiecutter.module_name}} import {{cookiecutter.class_name}}
 
 
 def _setup_log():
@@ -26,6 +26,4 @@ def run():
     """Main command line entry point."""
     conf = Config()
     conf.get_config()
-    {% if cookiecutter.add_gui -%}
-    gui(conf){% else %}{{cookiecutter.class_name}}(conf)
-    {%- endif %}
+    {% if cookiecutter.add_gui %}gui(conf){% else %}{{cookiecutter.class_name}}(conf){% endif %}

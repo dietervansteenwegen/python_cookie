@@ -49,7 +49,19 @@ clean:
 	rm -rf build
 	rm -rf dist
 
-{% if cookiecutter.add_gui -%}
+.PHONY: prep
+## run pre-commit rules
+prep:
+	@echo "🚀 Checking lock file consistency with 'pyproject.toml'"
+	@uv sync --locked
+	@echo "🚀 Running pre-commit"
+	uv run pre-commit run --all-files
+	@echo "🚀 Checking for obsolete dependencies: Running deptry"
+	@uv run deptry .
+	@echo "🚀 Checking for dead code: Running dead"
+	@uv run dead
+
+{% if cookiecutter.add_gui %}
 .PHONY: ui
 ## Convert UI files to .py
 ui:

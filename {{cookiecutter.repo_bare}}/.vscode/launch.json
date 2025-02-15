@@ -24,6 +24,10 @@
             "request": "launch",
             // "program": "src/{{cookiecutter.module_name}}/__main__.py",
             "module": "{{cookiecutter.module_name}}",
+            // "args": [
+            //     "--src_fn",
+            //     "./src.csv"
+            // ],
             "console": "integratedTerminal"
         }
         {%- endif -%}

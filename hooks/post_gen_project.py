@@ -235,6 +235,7 @@ run_command('git init --quiet')
 run_command('git remote add origin git_prive:dietervansteenwegen/{{cookiecutter.repo_bare}}.git')
 run_command('git checkout -b develop --quiet')
 run_command('git add *')
+run_command('git reset -- todo.md')
 print(' Done!')
 
 ############################
@@ -261,7 +262,7 @@ if to_log:
     print_formatted('')
     print_formatted('Check output logs in  "{{cookiecutter.repo_bare}}/cookiecutter.log"')
     print_formatted('')
-    print_formatted('Run \'make install\' and activate .venv to start developing.')
-    print_formatted('Run \'uv tool install .\' to install system-wide.')
+print_formatted('Run \'make install\' and activate .venv to start developing.')
+print_formatted('Run \'uv tool install .\' to install system-wide.')
 print_formatted('Create remote repository dietervansteenwegen/{{cookiecutter.repo_bare}}.git')
 print('*' * 99)
