@@ -1,5 +1,7 @@
 # Python cookiecutter template CHANGELOG
 
+- feature: Add prep_for_tagging make recipe
+
 ## v0.1.0 (20/01/2025)
 
 - feat: Migrate from `PIP` and `VENV` to  `UV`

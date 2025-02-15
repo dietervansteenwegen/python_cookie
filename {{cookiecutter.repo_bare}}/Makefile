@@ -1,3 +1,15 @@
+.PHONY: prep_for_tagging
+## Prepare for tagging ()
+prep_for_tagging:
+	@echo "*****************************************************************************"
+	@echo ">> Locking dependencies and running pre-commit rules..."
+	@echo "*****************************************************************************"
+	@uv lock
+	@uv export --format requirements-txt > requirements.txt
+	@uv run pre-commit autoupdate
+	@uv run pre-commit run --all-files
+
+
 .PHONY: cleanup_git
 ## Create list of local branches in a temporary file.
 ## Afterwards remove all branches from file.
@@ -37,17 +49,12 @@ clean:
 	rm -rf build
 	rm -rf dist
 
-.PHONY: prep
-## run pre-commit rules
-prep:
-	pre-commit run --all-files
-
-{% if cookiecutter.add_gui %}
+{% if cookiecutter.add_gui -%}
 .PHONY: ui
 ## Convert UI files to .py
 ui:
 	pyuic5 assets/gui_sources/mainwindow.ui -o src/gui/ui_sources/mainwindow.py
-{% endif %}
+{%- endif %}
 
 
 #################################################################################
