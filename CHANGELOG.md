@@ -13,6 +13,7 @@
 - feature: Extend the `prep` make recipe (Add lockfile sync, deptry and dead)
 - feature: Add python version 3.12 for UV
 - feature: Add prep_for_tagging make recipe
+- feature: Flatten directory structure for GUI version
 
 ## v0.1.0 (20/01/2025)
 
