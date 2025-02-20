@@ -2,18 +2,12 @@
 
 ## UV
 
-- `uv venv --python 3.11.6` (or other version)
-- `uv sync --frozen` (install deps)
+- `make install`
 
-##  OR Activate VENV
+- Activate VENV:
 
-- Linux
-
-  - `source .\venv\Scripts\activate`
-
-- Windows
-
-  - `.\venv\Scripts\activate.bat`
+  - Linux: `source .\venv\Scripts\activate`
+  - Windows:`.\venv\Scripts\activate`
 
 ## Update docs
 
@@ -23,7 +17,6 @@
 ## COMMIT/PUSH
 
 - `git add *`
-- `git status`
+- `git status` (unstage todo.md,...)
 - `git commit -m "initial commit"`
 - `git push -u origin develop`
-

@@ -1,7 +1,7 @@
 # See https://peps.python.org/pep-0621/
 
 [project]
-name = '{{cookiecutter.module_name}}' # No_spaces_allowed
+name = '{{cookiecutter.module_name}}'
 description = '{{cookiecutter.project_description}}'
 readme = 'README.md'
 license = { file = 'LICENSE' }
@@ -32,12 +32,13 @@ dependencies = [
 Homepage = 'https://boxfish.be'
 Repository = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}.git'
 Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/blob/master/CHANGELOG.md'
-# Documentation = 'https://readthedocs.org'
+
 
 
 {% if cookiecutter.add_gui -%}[project.gui-scripts]
 {{cookiecutter.module_name}}_gui = '{{cookiecutter.module_name}}.__main__:run'
 {% else -%}
+# Documentation = 'https://readthedocs.org'
 [project.scripts]
 {{cookiecutter.module_name}}_cli = '{{cookiecutter.module_name}}.__main__:run'
 {%- endif -%}

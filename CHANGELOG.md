@@ -17,6 +17,7 @@
 - refactor: Code cleanup
 - feature: Migrate from PyQt5 to PySide6
 - feature: Streamline similarities between gui/cli
+- docs: Improve cookiecutter prompts and todo info
 
 ## v0.1.0 (20/01/2025)
 
