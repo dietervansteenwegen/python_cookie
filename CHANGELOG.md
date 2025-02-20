@@ -14,6 +14,7 @@
 - feature: Add python version 3.12 for UV
 - feature: Add prep_for_tagging make recipe
 - feature: Flatten directory structure for GUI version
+- refactor: Code cleanup
 
 ## v0.1.0 (20/01/2025)
 

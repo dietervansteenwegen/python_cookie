@@ -1,14 +1,17 @@
 .PHONY: prep_for_tagging
 ## Prepare for tagging ()
 prep_for_tagging:
-	@echo "*****************************************************************************"
-	@echo ">> Locking dependencies and running pre-commit rules..."
-	@echo "*****************************************************************************"
+	@echo "🚀 Checking lock file consistency with 'pyproject.toml'"
+	@uv sync --locked
 	@uv lock
 	@uv export --format requirements-txt > requirements.txt
+	@echo "🚀 Running pre-commit"
 	@uv run pre-commit autoupdate
-	@uv run pre-commit run --all-files
-
+	uv run pre-commit run --all-files
+	@echo "🚀 Checking for obsolete dependencies: Running deptry"
+	@uv run deptry .
+	@echo "🚀 Checking for dead code: Running dead"
+	@uv run dead
 
 .PHONY: cleanup_git
 ## Create list of local branches in a temporary file.
@@ -49,23 +52,11 @@ clean:
 	rm -rf build
 	rm -rf dist
 
-.PHONY: prep
-## run pre-commit rules
-prep:
-	@echo "🚀 Checking lock file consistency with 'pyproject.toml'"
-	@uv sync --locked
-	@echo "🚀 Running pre-commit"
-	uv run pre-commit run --all-files
-	@echo "🚀 Checking for obsolete dependencies: Running deptry"
-	@uv run deptry .
-	@echo "🚀 Checking for dead code: Running dead"
-	@uv run dead
-
-{% if cookiecutter.add_gui %}
+{% if cookiecutter.add_gui -%}
 .PHONY: ui
 ## Convert UI files to .py
 ui:
-	pyuic5 assets/gui_sources/mainwindow.ui -o src/gui/ui_sources/mainwindow.py
+	@pyside6-uic assets/ui_sources/mainwindow.ui -o src/{{cookiecutter.module_name}}/ui_sources/mainwindow.py
 {%- endif %}
 
 

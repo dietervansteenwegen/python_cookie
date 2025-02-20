@@ -1,10 +1,6 @@
 # See https://peps.python.org/pep-0621/
 
 [project]
-dependencies = [
-    {%- if cookiecutter.add_gui %}"PyQt5",{%- endif %}
-    {%- if cookiecutter.use_config_file -%}"tomli>=2.2.1",{%- endif %}
-]
 name = '{{cookiecutter.module_name}}' # No_spaces_allowed
 description = '{{cookiecutter.project_description}}'
 readme = 'README.md'
@@ -17,7 +13,7 @@ authors = [
 classifiers = [
     'Development Status :: 4 - Beta',
     'Programming Language :: Python',
-    "Environment :: Console",
+    {% if cookiecutter.add_gui -%}"Environment :: Gui",{% else %}"Environment :: Console",{% endif %}
     "Intended Audience :: Developers",
     "Operating System :: Microsoft :: Windows :: Windows 10",
     "Operating System :: Microsoft :: Windows :: Windows 11",
@@ -27,20 +23,24 @@ classifiers = [
 keywords = [{{cookiecutter.keywords}}]
 version = 'v0.1.0'
 
+dependencies = [
+    {%- if cookiecutter.add_gui %}"PySide6>=6.8",{%- endif %}
+    {%- if cookiecutter.use_config_file -%}"tomli>=2.2.1",{%- endif %}
+]
+
 [project.urls]
 Homepage = 'https://boxfish.be'
 Repository = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}.git'
 Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/blob/master/CHANGELOG.md'
 # Documentation = 'https://readthedocs.org'
 
-[project.scripts]
-{{cookiecutter.module_name}}_cli = '{{cookiecutter.module_name}}.__main__:run'
 
 {% if cookiecutter.add_gui -%}[project.gui-scripts]
-{{cookiecutter.module_name}}-gui = '{{cookiecutter.module_name}}.cli:run'
-
-[project.optional-dependencies]
-gui = ['PyQt6']{%- endif %}
+{{cookiecutter.module_name}}_gui = '{{cookiecutter.module_name}}.__main__:run'
+{% else -%}
+[project.scripts]
+{{cookiecutter.module_name}}_cli = '{{cookiecutter.module_name}}.__main__:run'
+{%- endif -%}
 
 [build-system]
 requires = ['setuptools >= 61.0']
@@ -53,6 +53,7 @@ dev-dependencies = [
     "deptry>=0.22.0",
     "ruff>=0.9.6",
     "dead>=2.1.0",
+    {% if cookiecutter.add_gui -%}"pyside6-stubs>=6.4",{% endif %}
 ]
 
 [tool.uv.pip]
@@ -145,7 +146,7 @@ ignore = [
     "COM812",
 {% if cookiecutter.add_gui -%}
     # PyQT doesn't adhere to or works well with N801/N802/N803/N813
-    "N801",   
+    "N801",
     "N802",
     "N803",
     "N813",
