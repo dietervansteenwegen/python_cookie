@@ -37,10 +37,11 @@ def excepthook(exc_type, exc_value, exc_tb) -> None:
 
 sys.excepthook = excepthook
 {% endif %}
-_setup_log()
+log = _setup_log()
 try:
     config = Config()
     config.get_config()
+    log.debug(f'Starting {{cookiecutter.project_name}} with config {config}')
     sys.exit(run(config))
 except KeyboardInterrupt:
     sys.exit(1)

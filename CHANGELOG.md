@@ -16,6 +16,7 @@
 - feature: Flatten directory structure for GUI version
 - refactor: Code cleanup
 - feature: Migrate from PyQt5 to PySide6
+- feature: Streamline similarities between gui/cli
 
 ## v0.1.0 (20/01/2025)
 
