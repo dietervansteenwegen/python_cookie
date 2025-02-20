@@ -18,6 +18,8 @@
 - feature: Migrate from PyQt5 to PySide6
 - feature: Streamline similarities between gui/cli
 - docs: Improve cookiecutter prompts and todo info
+- docs: Rename repo_bare to project_name_short
+- fix: Remove bandit settings and add ui_sources to exclude
 
 ## v0.1.0 (20/01/2025)
 

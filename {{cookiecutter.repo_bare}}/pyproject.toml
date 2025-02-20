@@ -71,11 +71,6 @@ include = [
 ] # package names should match these glob patterns (['*'] by default)
 # exclude = ['my_package.tests*'] # exclude packages matching these glob patterns (empty by default)
 
-[tool.bandit]
-exclude_dirs = ["tests"]
-# tests = ["B201", "B301"]
-# skips = ["B101", "B601"]
-
 [tool.ruff]
 target-version = "py310"
 exclude = [
@@ -101,6 +96,7 @@ exclude = [
     "node_modules",
     "venv",
     "docs",
+{% if cookiecutter.add_gui -%}    "src/{{cookiecutter.module_name}}/ui_sources/*",{% endif -%}
 ]
 line-length = 100
 indent-width = 4
