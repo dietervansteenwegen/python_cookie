@@ -15,6 +15,7 @@
 - feature: Add prep_for_tagging make recipe
 - feature: Flatten directory structure for GUI version
 - refactor: Code cleanup
+- feature: Migrate from PyQt5 to PySide6
 
 ## v0.1.0 (20/01/2025)
 

@@ -13,9 +13,9 @@ import logging.handlers
 from pathlib import Path
 from typing import Union
 {% if cookiecutter.add_gui -%}
-from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import (QDesktopWidget, QDialog, QHBoxLayout,
-                             QPlainTextEdit)
+from PySide6 import QtGui as qtg
+from PySide6.QtGui import QFont
+from PySide6.QtWidgets import QDialog, QHBoxLayout, QPlainTextEdit
 {%- endif %}
 
 LOG_FMT = (
@@ -126,7 +126,7 @@ class QTLogHandler(logging.Handler):
         self.widget = QPlainTextEdit()
         self.widget.setReadOnly(True)
         self.widget.resize(1000, 200)
-        self.widget.setLineWrapMode(QPlainTextEdit.NoWrap)  # type: ignore
+        self.widget.setLineWrapMode(QPlainTextEdit.LineWrapMode.NoWrap)  # type: ignore
         self.widget.setUndoRedoEnabled(False)
         self.layout = QHBoxLayout(parent)
         self.layout.addWidget(self.widget)
@@ -145,13 +145,13 @@ class DialogLog(QDialog):
         self.setWindowTitle('Logging')
         self.resize(1000, 200)
         font = QFont('Monospace')
-        font.setStyleHint(QFont.TypeWriter)  # type: ignore
+        font.setStyleHint(QFont.StyleHint.TypeWriter)  # type: ignore
         self.setFont(font)
         self._move_bottom_left()
 
     def _move_bottom_left(self):
         """Move dialog box to bottom left of current monitor."""
-        monitor = QDesktopWidget().screenGeometry()
+        monitor = qtg.QGuiApplication.primaryScreen().availableGeometry()
         window = self.geometry()
 
         y = (monitor.height() - 40) - window.height()
