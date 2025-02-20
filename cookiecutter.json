@@ -1,6 +1,6 @@
 {
     "project_name": "Project Name",
-    "repo_bare": "repo",
+    "project_name_short": "project_name_short",
     "project_link": "https://www.boxfish.be",
     "module_name": "module_name",
     "class_name": "ClassName",
@@ -12,7 +12,7 @@
     "create_assets_dir": false,
     "__prompts__": {
         "project_name": "Project name (used in README.md and headers)",
-        "repo_bare": "Repository name without '.git' suffix",
+        "project_name_short": "Short project name (used as repo name, log filenames and project directory). No spaces allowed.",
         "project_link": "Project link",
         "module_name": "Name of the module, lowercase, using underscores",
         "class_name": "Name of the base class in CamelCase",

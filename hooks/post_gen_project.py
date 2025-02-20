@@ -185,7 +185,7 @@ def rm(file):
     else:
         to_log.append[f'Could not remove file {file}!', -1, '', '']
 
-print('\n--> Generated files in "./{{cookiecutter.repo_bare}}".')
+print('\n--> Generated files in "./{{cookiecutter.project_name_short}}".')
 to_log:list[str] = []
 
 ############################
@@ -234,7 +234,7 @@ print(' Done!')
 ############################
 print('--> Initializing GIT...', end = '', flush = True)
 run_command('git init --quiet')
-run_command('git remote add origin git_prive:dietervansteenwegen/{{cookiecutter.repo_bare}}.git')
+run_command('git remote add origin git_prive:dietervansteenwegen/{{cookiecutter.project_name_short}}.git')
 run_command('git checkout -b develop --quiet')
 run_command('git add *')
 run_command('git reset -- todo.md')
@@ -248,7 +248,7 @@ def print_formatted(msg)-> None:
 
 print('\n' + '*' * 99)
 print_formatted('Finished creating project "{{cookiecutter.project_name}}" in directory '
-      '"./{{cookiecutter.repo_bare}}"...')
+      '"./{{cookiecutter.project_name_short}}"...')
 if to_log:
     print_formatted('')
     print_formatted('Errors with the following commands:')
@@ -262,9 +262,9 @@ if to_log:
             output.write('*' * 99)
             print_formatted(f'"{log[0]}"')
     print_formatted('')
-    print_formatted('Check output logs in  "{{cookiecutter.repo_bare}}/cookiecutter.log"')
+    print_formatted('Check output logs in  "{{cookiecutter.project_name_short}}/cookiecutter.log"')
     print_formatted('')
 print_formatted('Run \'make install\' and activate .venv to start developing.')
 print_formatted('Run \'uv tool install .\' to install system-wide.')
-print_formatted('Create remote repository dietervansteenwegen/{{cookiecutter.repo_bare}}.git')
+print_formatted('Create remote repository dietervansteenwegen/{{cookiecutter.project_name_short}}.git')
 print('*' * 99)

@@ -19,7 +19,7 @@ make install
 
 ## Release History
 
-See [CHANGELOG.md](https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/blob/master/CHANGELOG.md)
+See [CHANGELOG.md](https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}/blob/master/CHANGELOG.md)
 
 ## Meta
 
@@ -29,6 +29,6 @@ Author: Dieter Vansteenwegen
 
 Distributed under the GNU GPLv3 license. See [LICENSE](LICENSE) for more information.
 
-![GitHub last commit (master)](https://img.shields.io/github/last-commit/dietervansteenwegen/{{cookiecutter.repo_bare}}/master?style=plastic)
-![GitHub commit activity (master)](https://img.shields.io/github/commit-activity/w/dietervansteenwegen/{{cookiecutter.repo_bare}}/develop?style=plastic)
-![GitHub](https://img.shields.io/github/license/dietervansteenwegen/{{cookiecutter.repo_bare}}?style=plastic)
+![GitHub last commit (master)](https://img.shields.io/github/last-commit/dietervansteenwegen/{{cookiecutter.project_name_short}}/master?style=plastic)
+![GitHub commit activity (master)](https://img.shields.io/github/commit-activity/w/dietervansteenwegen/{{cookiecutter.project_name_short}}/develop?style=plastic)
+![GitHub](https://img.shields.io/github/license/dietervansteenwegen/{{cookiecutter.project_name_short}}?style=plastic)

@@ -29,15 +29,16 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = 'https://boxfish.be'
-Repository = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}.git'
-Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.repo_bare}}/blob/master/CHANGELOG.md'
+
 
 
 
 {% if cookiecutter.add_gui -%}[project.gui-scripts]
 {{cookiecutter.module_name}}_gui = '{{cookiecutter.module_name}}.__main__:run'
 {% else -%}
+Homepage = 'https://boxfish.be'
+Repository = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}.git'
+Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}/blob/master/CHANGELOG.md'
 # Documentation = 'https://readthedocs.org'
 [project.scripts]
 {{cookiecutter.module_name}}_cli = '{{cookiecutter.module_name}}.__main__:run'
