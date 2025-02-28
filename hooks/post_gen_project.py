@@ -191,16 +191,10 @@ to_log:list[str] = []
 ############################
 # DOCS
 ############################
-{% if cookiecutter.add_documentation %}
-print('--> Generating API documentation...', end = '', flush = True)
-subprocess.check_call(["sphinx-apidoc", 
-                       "--force", 
-                       "--output-dir", "./docs/source",
-                    #    "./src/{{cookiecutter.module_name}}"])
-                       "./src"])
-print(' Done')
-{% else %}
+{% if not cookiecutter.add_documentation %}
+print('--> Removing documentation directory...', end = '', flush = True)
 rmdir('docs')
+print(' Done!')
 {% endif %}
 
 ############################

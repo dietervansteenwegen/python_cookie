@@ -20,6 +20,7 @@
 - docs: Improve cookiecutter prompts and todo info
 - docs: Rename repo_bare to project_name_short
 - fix: Remove bandit settings and add ui_sources to exclude
+- fix: Add Sphinx to dev deps if generating documentation
 
 ## v0.1.0 (20/01/2025)
 

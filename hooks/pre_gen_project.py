@@ -4,9 +4,12 @@
 
 REQUIRED_PACKAGES: list = [
     "uv",
-#     "ruff",
-#     "pre-commit",
+    #     "ruff",
+    #     "pre-commit",
 ]
 
-print("\n---> This template requires the following packages and tools to be installed:")
+print(
+    "\n---> This template requires the following packages and tools to be installed: ",
+    end="",
+)
 print(", ".join([f"[{package}]" for package in REQUIRED_PACKAGES]))

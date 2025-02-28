@@ -42,7 +42,7 @@ Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_
 # Documentation = 'https://readthedocs.org'
 [project.scripts]
 {{cookiecutter.module_name}}_cli = '{{cookiecutter.module_name}}.__main__:run'
-{%- endif -%}
+{%- endif %}
 
 [build-system]
 requires = ['setuptools >= 61.0']
@@ -56,6 +56,13 @@ dev-dependencies = [
     "ruff>=0.9.6",
     "dead>=2.1.0",
     {% if cookiecutter.add_gui -%}"pyside6-stubs>=6.4",{% endif %}
+    {% if cookiecutter.add_documentation -%}"sphinx>=8.2.1",
+    "sphinx-rtd-theme>=3.0.2",
+    "sphinxcontrib-napoleon>=0.7",
+    "recommonmark>=0.7.1",
+    "sphinx-copybutton>=0.5.2",
+    "sphinx-toggleprompt>=0.6.0",
+    "myst-parser>=4.0.1",{% endif %}
 ]
 
 [tool.uv.pip]
@@ -72,7 +79,6 @@ include = [
 # exclude = ['my_package.tests*'] # exclude packages matching these glob patterns (empty by default)
 
 [tool.ruff]
-target-version = "py310"
 exclude = [
     ".bzr",
     ".direnv",
@@ -98,6 +104,7 @@ exclude = [
     "docs",
 {% if cookiecutter.add_gui -%}    "src/{{cookiecutter.module_name}}/ui_sources/*",{% endif -%}
 ]
+target-version = "py310"
 line-length = 100
 indent-width = 4
 
