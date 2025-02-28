@@ -27,7 +27,7 @@ def _setup_log():
 def excepthook(exc_type, exc_value, exc_tb) -> None:
     log = logging.getLogger(__name__)
     tabbed_msg: list[str] = [
-        i.replace('\n', '\t').replace(' ', '')
+        i.replace('\n', '\t').replace('  ', ' ')
         for i in traceback.format_exception(exc_type, exc_value, exc_tb)
         ]
     for msg in tabbed_msg:
