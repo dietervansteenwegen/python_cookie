@@ -1,6 +1,6 @@
 # Python cookiecutter template CHANGELOG
 
-## Not released yet
+## v0.2.0 (03/03/2025)
 
 - docs: Add documentation for argparse
 - feature: Don't stage `todo.md` for commit
