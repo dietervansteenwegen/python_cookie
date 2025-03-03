@@ -14,11 +14,13 @@ from .config import Config
 from .log import DialogLog
 from .ui_sources.mainwindow import Ui_MainWindow
 
+import sys
 
 class MainWindow(Ui_MainWindow, qtw.QMainWindow):
     def __init__(self, *args, obj=None, **kwargs):
         super().__init__()
         self.setupUi(self)
+        self.destroyed.connect(sys.exit)
         self.dialog_log: DialogLog = DialogLog(self)
         self.dialog_log.show()
 

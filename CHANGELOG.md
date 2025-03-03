@@ -22,6 +22,7 @@
 - fix: Remove bandit settings and add ui_sources to exclude
 - fix: Add Sphinx to dev deps if generating documentation
 - fix: Don't strip all spaces from exception hook
+- feat: Exit on destroyed MainWindow
 
 ## v0.1.0 (20/01/2025)
 
