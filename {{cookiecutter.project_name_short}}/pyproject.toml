@@ -54,7 +54,7 @@ dev-dependencies = [
     "pre-commit>=4.1.0",
     "deptry>=0.22.0",
     "ruff>=0.9.6",
-    "dead>=2.1.0",
+    "vulture>=2.14",
     {% if cookiecutter.add_gui -%}"pyside6-stubs>=6.4",{% endif %}
     {% if cookiecutter.add_documentation -%}"sphinx>=8.2.1",
     "sphinx-rtd-theme>=3.0.2",
@@ -173,3 +173,13 @@ quote-style = "single"
 indent-style = "space"
 skip-magic-trailing-comma = false
 exclude = ["*.pyi"]
+
+[tool.vulture]
+exclude = [{% if cookiecutter.add_gui -%}"src/{{cookiecutter.module_name}}/ui_sources"{% endif %}]
+ignore_names = ['args', 'kwargs']
+min_confidence = 60
+paths = ['./src']
+# ignore_decorators = ["@app.route", "@require_*"]
+# make_whitelist = true
+# sort_by_size = true
+# verbose = true

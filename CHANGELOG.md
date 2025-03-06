@@ -1,5 +1,9 @@
 # Python cookiecutter template CHANGELOG
 
+## Not yet released
+
+- build: Replace dead with Vulture
+
 ## v0.2.0 (03/03/2025)
 
 - docs: Add documentation for argparse
