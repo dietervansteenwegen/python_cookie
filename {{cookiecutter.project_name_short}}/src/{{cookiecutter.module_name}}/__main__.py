@@ -15,7 +15,7 @@ import traceback
 from .cli import run{%- endif %}
 
 from .log import add_rotating_file, setup_logger
-{%- if cookiecutter.create_env_template -%}from dotenv import load_dotenv{%- endif %}
+{%if cookiecutter.create_env_template %}from dotenv import load_dotenv{%- endif %}
 
 """Main entry point for `python -m {{cookiecutter.module_name}}`."""
 

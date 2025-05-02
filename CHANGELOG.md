@@ -3,7 +3,8 @@
 ## Not yet released
 
 - build: Replace dead with Vulture
-- Add templating for dotenv loading
+- feat: Add templating for dotenv loading
+- build: bump Ruff pre-commit from 9.8 to 11.8
 
 ## v0.2.0 (03/03/2025)
 
