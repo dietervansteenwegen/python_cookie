@@ -3,6 +3,7 @@
 ## Not yet released
 
 - build: Replace dead with Vulture
+- Add templating for dotenv loading
 
 ## v0.2.0 (03/03/2025)
 
