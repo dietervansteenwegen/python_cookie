@@ -11,7 +11,7 @@ prep_for_tagging:
 	@echo "🚀 Checking for obsolete dependencies: Running deptry"
 	@uv run deptry .
 	@echo "🚀 Checking for dead code: Running Vulture"
-	@uv run vulture ./src 
+	@uv run vulture ./src
 
 .PHONY: cleanup_git
 ## Create list of local branches in a temporary file.

@@ -13,10 +13,13 @@ import logging
 import traceback
 {% else -%}
 from .cli import run{%- endif %}
+
 from .log import add_rotating_file, setup_logger
+{%if cookiecutter.create_env_template %}from dotenv import load_dotenv{%- endif %}
 
 """Main entry point for `python -m {{cookiecutter.module_name}}`."""
 
+{% if cookiecutter.create_env_template -%}load_dotenv(){%- endif %}
 def _setup_log():
     """Set up logging."""
     log = setup_logger()

@@ -26,6 +26,7 @@ version = 'v0.1.0'
 dependencies = [
     {%- if cookiecutter.add_gui %}"PySide6>=6.8",{%- endif %}
     {%- if cookiecutter.use_config_file -%}"tomli>=2.2.1",{%- endif %}
+    {%- if cookiecutter.create_env_template -%}"python-dotenv>=1.1.0",{%- endif %}
 ]
 
 [project.urls]

@@ -212,6 +212,13 @@ rm('config.toml')
 {% endif %}
 
 ############################
+# .env FILE
+############################
+{% if not cookiecutter.create_env_template %}
+rm('.env')
+{% endif %}
+
+############################
 # GUI
 ############################
 {% if not cookiecutter.add_gui %}

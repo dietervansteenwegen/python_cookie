@@ -10,6 +10,7 @@
     "add_documentation": false,
     "add_gui": false,
     "create_assets_dir": false,
+    "create_env_template": false,
     "__prompts__": {
         "project_name": "Project name (used in README.md and headers)",
         "project_name_short": "Short project name (used as repo name, log filenames and project directory). No spaces allowed.",
@@ -21,6 +22,7 @@
         "keywords": "Package keywords: 'keyword1','keyword2',...",
         "use_config_file": "Require user to create and use a config file?",
         "add_documentation": "Add Sphinx documenation?",
-        "create_assets_dir": "Create directory for assets?"
+        "create_assets_dir": "Create directory for assets?",
+        "create_env_template": "Create a template for .env file loading?"
     }
 }
