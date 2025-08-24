@@ -183,7 +183,7 @@ def rm(file):
     if file.is_file():
         file.unlink()
     else:
-        to_log.append[f'Could not remove file {file}!', -1, '', '']
+        to_log.append(f'Could not remove file {file}!', -1, '', '')
 
 print('\n--> Generated files in "./{{cookiecutter.project_name_short}}".')
 to_log:list[str] = []
