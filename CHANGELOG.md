@@ -5,6 +5,7 @@
 - build: Replace dead with Vulture
 - feat: Add templating for dotenv loading
 - build: bump Ruff pre-commit from 9.8 to 11.8
+- feat: Add copilot instructions
 
 ## v0.2.0 (03/03/2025)
 
