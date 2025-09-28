@@ -8,6 +8,7 @@
 - feat: Add copilot instructions
 - feat: Add precommit (local) hooks. Move Ruff to local.
 - feat: Add versionioningit and auto-versioning
+- fix (pyproject.toml): Cleanup
   
 ## v0.2.0 (03/03/2025)
 
