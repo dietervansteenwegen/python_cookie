@@ -6,7 +6,9 @@
 - feat: Add templating for dotenv loading
 - build: bump Ruff pre-commit from 9.8 to 11.8
 - feat: Add copilot instructions
-
+- feat: Add precommit (local) hooks. Move Ruff to local.
+- feat: Add versionioningit and auto-versioning
+  
 ## v0.2.0 (03/03/2025)
 
 - docs: Add documentation for argparse
