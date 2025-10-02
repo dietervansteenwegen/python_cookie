@@ -10,4 +10,6 @@ applyTo: "**/*.py"
 - Updated docstrings/type hints if necessary when making changes.
 - When making significant changes, update the changelog in `CHANGELOG.md` in the "not yet released" section. Be brief. Prefix with "<copilot>"
 - Use timezone aware datetime objects.
+- Don't extend past 99 characters per line.
+- put imports on top and order according to ruff (stdlib, third party, local)
 - For small scripts, use inline script metadata according to pep 723
