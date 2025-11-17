@@ -10,6 +10,7 @@
 - feat: Add versionioningit and auto-versioning
 - fix (pyproject.toml): Cleanup
 - feat: Add pre-commit-update hook
+- feat: Improve ArgumentParser user feedback
   
 ## v0.2.0 (03/03/2025)
 

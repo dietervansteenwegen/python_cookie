@@ -17,38 +17,9 @@ PROGRAM_DESCRIPTION: str = '{{cookiecutter.project_name}}'
 log = logging.getLogger(__name__)
 
 
-def get_arguments() -> argparse.Namespace:
-    """Parse  and evaluate the supplied arguments.
-
-    Returns:
-        argparse.Namespace: Namespace containing the parsed arguments
-    """
-    parser = HelpfullArgumentParser(
-        add_help=True,
-        description=PROGRAM_DESCRIPTION,
-    )
-    # parser.add_argument('arg', nargs='*', help='Positional argument')
-    ## ADD REQUIRED ARG BELOW THIS GROUP. OPTIONAL ABOVE...
-{%if- cookiecutter.use_config_file %}
-    required_args = parser.add_argument_group('Required arguments')
-    required_args.add_argument(
-        '-c',
-        '--config_file',
-        help='Location of the config file.',
-        action='store',
-        dest='config_file',
-        required=True,
-    ){% else %}
-    # required_args = parser.add_argument_group('Required arguments')
-    # required_args.add_argument(
-    #     '--src_fn',
-    #     help='Source CSV to process.',
-    # )
-{%- endif %}
-    return parser.parse_args()
 
 
-class HelpfullArgumentParser(argparse.ArgumentParser):
+class HelpfulArgumentParser(argparse.ArgumentParser):
     """ArgumentParser subclass with improved error feedback.
 
     Provides better error message to user.
@@ -104,3 +75,33 @@ class Config:
         return (f'Config with arguments {self.arguments} and config {self.config} '
             {% if cookiecutter.use_config_file %}f'from file [{self.arguments.config_file}]'{% endif -%}
         )
+
+def get_arguments() -> argparse.Namespace:
+    """Parse  and evaluate the supplied arguments.
+
+    Returns:
+        argparse.Namespace: Namespace containing the parsed arguments
+    """
+    parser = HelpfulArgumentParser(
+        add_help=True,
+        description=PROGRAM_DESCRIPTION,
+    )
+    # parser.add_argument('arg', nargs='*', help='Positional argument')
+    ## ADD REQUIRED ARG BELOW THIS GROUP. OPTIONAL ABOVE...
+{%if- cookiecutter.use_config_file %}
+    required_args = parser.add_argument_group('Required arguments')
+    required_args.add_argument(
+        '-c',
+        '--config_file',
+        help='Location of the config file.',
+        action='store',
+        dest='config_file',
+        required=True,
+    ){% else %}
+    # required_args = parser.add_argument_group('Required arguments')
+    # required_args.add_argument(
+    #     '--src_fn',
+    #     help='Source CSV to process.',
+    # )
+{%- endif %}
+    return parser.parse_args()
