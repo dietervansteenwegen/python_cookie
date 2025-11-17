@@ -27,7 +27,7 @@ dependencies = [
     {%- if cookiecutter.use_config_file -%}"tomli>=2.2.1",{%- endif %}
     {%- if cookiecutter.create_env_template -%}"python-dotenv>=1.1.0",{%- endif %}
 ]
-dynamic= ["version"]
+dynamic = ["version"]
 
 [project.urls]
 {% if cookiecutter.add_gui -%}[project.gui-scripts]
@@ -81,6 +81,12 @@ generate-hashes = true
 [tool.uv.sources]
 {{cookiecutter.module_name}} = { workspace = true }
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/{{cookiecutter.module}}"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/{{cookiecutter.module}}/data" = "{{cookiecutter.module}}/data"
+
 [tool.setuptools.packages.find]
 where = ['src'] # list of folders that contain the packages (['.'] by default)
 include = [
@@ -89,9 +95,6 @@ include = [
 # exclude = ['my_package.tests*'] # exclude packages matching these glob patterns (empty by default)
 
 [tool.ruff]
-target-version = "py310"
-line-length = 100
-indent-width = 4
 exclude = [
     ".git",
     ".mypy_cache",
@@ -109,6 +112,9 @@ exclude = [
     "src/{{cookiecutter.module_name}}/ui_sources/*",
 {%- endif %}
 ]
+target-version = "py312"
+line-length = 100
+indent-width = 4
 
 [tool.ruff.lint]
 select = [

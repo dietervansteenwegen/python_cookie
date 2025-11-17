@@ -11,6 +11,7 @@
 - fix (pyproject.toml): Cleanup
 - feat: Add pre-commit-update hook
 - feat: Improve ArgumentParser user feedback
+- feat: Add data directory (included in packaging)
   
 ## v0.2.0 (03/03/2025)
 

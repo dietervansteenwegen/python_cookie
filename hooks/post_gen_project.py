@@ -231,6 +231,18 @@ print(' Done!')
 {% endif %}
 
 ############################
+# DATA DIRECTORY
+############################
+{% if not cookiecutter.add_data_dir %}
+print('--> cleaning up data directory...', end = '', flush = True)
+rmdir('src/{{cookiecutter.module_name}}/data')
+rm('src/{{cookiecutter.module_name}}/resources.py')
+print(' Done!')
+{% endif %}
+
+
+
+############################
 # GIT
 ############################
 print('--> Initializing GIT...', end = '', flush = True)

@@ -10,6 +10,7 @@
     "add_documentation": false,
     "add_gui": false,
     "create_assets_dir": false,
+    "add_data_dir": false,
     "create_env_template": false,
     "__prompts__": {
         "project_name": "Project name (used in README.md and headers)",
@@ -23,6 +24,7 @@
         "use_config_file": "Require user to create and use a config file?",
         "add_documentation": "Add Sphinx documenation?",
         "create_assets_dir": "Create directory for assets?",
+        "add_data_dir": "Add data directory for package data files?",
         "create_env_template": "Create a template for .env file loading?"
     }
 }
