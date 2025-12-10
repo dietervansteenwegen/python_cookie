@@ -52,7 +52,7 @@ source = "versioningit"
 [tool.versioningit]
 
 [tool.versioningit.write]
-file = "src/{{cookiecutter.module}}/__version__.py"
+file = "src/{{cookiecutter.module_name}}/__version__.py"
 
 [tool.uv]
 dev-dependencies = [
@@ -82,10 +82,10 @@ generate-hashes = true
 {{cookiecutter.module_name}} = { workspace = true }
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/{{cookiecutter.module}}"]
+packages = ["src/{{cookiecutter.module_name}}"]
 
 [tool.hatch.build.targets.wheel.force-include]
-"src/{{cookiecutter.module}}/data" = "{{cookiecutter.module}}/data"
+"src/{{cookiecutter.module_name}}/data" = "{{cookiecutter.module_name}}/data"
 
 [tool.setuptools.packages.find]
 where = ['src'] # list of folders that contain the packages (['.'] by default)

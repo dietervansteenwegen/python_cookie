@@ -19,7 +19,7 @@ def get_data_path(filename: str) -> Path:
         Path object to the data file
 
     Example:
-        >>> from {{cookiecutter.module}}.resources import get_data_path
+        >>> from {{cookiecutter.module_name}}.resources import get_data_path
         >>> test_pattern = get_data_path('test_pattern.png')
         >>> # Use with PIL
         >>> from PIL import Image
@@ -39,8 +39,8 @@ def get_data_bytes(filename: str) -> bytes:
         File contents as bytes
 
     Example:
-        >>> from {{cookiecutter.module}}.resources import get_data_bytes
+        >>> from {{cookiecutter.module_name}}.resources import get_data_bytes
         >>> data = get_data_bytes('test_pattern.png')
     """
-    data_dir = files("{{cookiecutter.module}}.data")
+    data_dir = files("{{cookiecutter.module_name}}.data")
     return data_dir.joinpath(filename).read_bytes()
