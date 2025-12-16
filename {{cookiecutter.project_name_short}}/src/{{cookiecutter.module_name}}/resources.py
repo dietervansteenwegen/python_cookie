@@ -1,4 +1,4 @@
-"""Resource loading utilities for turing_display package."""
+"""Resource loading utilities for {{cookiecutter.module_name}} package."""
 
 import sys
 from pathlib import Path

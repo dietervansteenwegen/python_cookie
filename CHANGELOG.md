@@ -13,6 +13,7 @@
 - feat: Improve ArgumentParser user feedback
 - feat: Add data directory (included in packaging)
 - feat: Add WIN32 and X11 environments if using a GUI
+- fix: add correct module name in docstring
   
 ## v0.2.0 (03/03/2025)
 
