@@ -13,7 +13,8 @@ authors = [
 classifiers = [
     'Development Status :: 4 - Beta',
     'Programming Language :: Python',
-    {% if cookiecutter.add_gui -%}"Environment :: Gui",{% else %}"Environment :: Console",{% endif %}
+    {% if cookiecutter.add_gui -%}'Environment :: X11 Applications',{% else %}"Environment :: Console",{% endif %}
+    {% if cookiecutter.add_gui -%}"Environment :: Win32 (MS Windows)",{% endif %}
     "Intended Audience :: Developers",
     "Operating System :: Microsoft :: Windows :: Windows 10",
     "Operating System :: Microsoft :: Windows :: Windows 11",
