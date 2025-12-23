@@ -251,6 +251,8 @@ run_command('git remote add origin git_prive:dietervansteenwegen/{{cookiecutter.
 run_command('git checkout -b develop --quiet')
 run_command('git add *')
 run_command('git reset -- todo.md')
+run_command('git commit -m "initial commit"')
+run_command('git tag -a v0.0.0 -m "initial commit"')
 print(' Done!')
 
 ############################

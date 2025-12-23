@@ -14,6 +14,7 @@
 - feat: Add data directory (included in packaging)
 - feat: Add WIN32 and X11 environments if using a GUI
 - fix: add correct module name in docstring
+- feat: Include initial commit and v0.0.0 tag
   
 ## v0.2.0 (03/03/2025)
 
