@@ -47,16 +47,8 @@ Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_
 requires = ["hatchling", "versioningit"]
 build-backend = "hatchling.build"
 
-[tool.hatch.version]
-source = "versioningit"
-
-[tool.versioningit]
-
-[tool.versioningit.write]
-file = "src/{{cookiecutter.module_name}}/__version__.py"
-
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     # "{{cookiecutter.module_name}}",
     "pre-commit>=4.1.0",
     "deptry>=0.22.0",
@@ -75,6 +67,16 @@ dev-dependencies = [
     "myst-parser>=4.0.1",
     {%- endif %}
 ]
+
+[tool.hatch.version]
+source = "versioningit"
+
+[tool.versioningit]
+
+[tool.versioningit.write]
+file = "src/{{cookiecutter.module_name}}/__version__.py"
+
+
 
 [tool.uv.pip]
 generate-hashes = true
