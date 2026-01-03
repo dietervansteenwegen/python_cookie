@@ -28,16 +28,18 @@ dependencies = [
     {%- if cookiecutter.use_config_file -%}"tomli>=2.2.1",{%- endif %}
     {%- if cookiecutter.create_env_template -%}"python-dotenv>=1.1.0",{%- endif %}
 ]
+
 dynamic = ["version"]
 
 [project.urls]
-{% if cookiecutter.add_gui -%}[project.gui-scripts]
-{{cookiecutter.module_name}}_gui = '{{cookiecutter.module_name}}.__main__:run'
-{% else -%}
 Homepage = 'https://boxfish.be'
 Repository = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}.git'
 Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}/blob/master/CHANGELOG.md'
 # Documentation = 'https://readthedocs.org'
+
+{% if cookiecutter.add_gui -%}[project.gui-scripts]
+{{cookiecutter.module_name}}_gui = '{{cookiecutter.module_name}}.__main__:run'
+{% else -%}
 
 [project.scripts]
 {{cookiecutter.module_name}}_cli = '{{cookiecutter.module_name}}.__main__:run'
@@ -75,8 +77,6 @@ source = "versioningit"
 
 [tool.versioningit.write]
 file = "src/{{cookiecutter.module_name}}/__version__.py"
-
-
 
 [tool.uv.pip]
 generate-hashes = true

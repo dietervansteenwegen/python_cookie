@@ -16,6 +16,7 @@
 - fix: add correct module name in docstring
 - feat: Include initial commit and v0.0.0 tag
 - fix: move dev dependencies to a dependency group
+- fix: Move project URL's to correct place in pyproject.toml
   
 ## v0.2.0 (03/03/2025)
 
