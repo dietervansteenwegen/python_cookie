@@ -153,6 +153,8 @@ select = [
     "PTH",
     # tryceratops
     "TRY",
+    # pydocstyle
+    "D",
 ]
 
 ignore = [
@@ -167,8 +169,11 @@ ignore = [
     "N801",
     "N802",
     "N803",
-    "N813",
-{%- endif %}
+    "N813",{%- endif %}
+    # Missing docstring in public module (too noisy for small projects)
+    "D100",
+    # Missing docstring in __init__ (covered by per-file ignores)
+    "D104",
 ]
 
 # Allow fix for all enabled rules (when `--fix`) is provided.
@@ -177,6 +182,9 @@ unfixable = []
 
 # Allow unused variables when underscore-prefixed.
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [tool.ruff.lint.per-file-ignores]
 # Ignore `D104` (missing docstring in public package) in all `__init__.py` files
