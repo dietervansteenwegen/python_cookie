@@ -3,6 +3,13 @@ fail_fast: false
 minimum_pre_commit_version: 3.0.0
 
 repos:
+# Pre-commit versions self-update
+  - repo: https://gitlab.com/vojko.pribudic.foss/pre-commit-update
+    rev: v0.8.0
+    hooks:
+      - id: pre-commit-update
+        args: [--dry-run]
+        
 # All files + miscellaneous
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
@@ -53,7 +60,7 @@ repos:
         types: [python]
       - id: requirements-txt-fixer
 
-# Markdown
+# Markdown, see https://pymarkdown.readthedocs.io/en/latest/rules/ for rules/config
   - repo: https://github.com/jackdewinter/pymarkdown/
     rev: v0.9.32
     hooks:
@@ -83,8 +90,3 @@ repos:
         language: system
         types: [python]
 
-  - repo: https://gitlab.com/vojko.pribudic.foss/pre-commit-update
-    rev: v0.8.0
-    hooks:
-      - id: pre-commit-update
-        args: [--dry-run]
