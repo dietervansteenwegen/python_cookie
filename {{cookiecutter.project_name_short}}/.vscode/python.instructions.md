@@ -22,3 +22,4 @@ applyTo: "**/*.py"
 - Check AND UPDATE docstrings and type hints when making changes.
 - Follow PEP 484/585/604 for type hinting.
 - Whenever making significant changes, update the changelog in `CHANGELOG.md` in the "not yet released" section. Be brief. Prefix with "<copilot>"
+- Do not create summary documents unless explicitly requested.
