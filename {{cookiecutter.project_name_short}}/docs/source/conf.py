@@ -9,10 +9,11 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-import os
 import sys
 from {{cookiecutter.module_name}} import __version__
-sys.path.insert(0, os.path.abspath('../..'))
+from pathlib import Path
+
+sys.path.insert(0, str(Path('../..').resolve()))
 
 # -- Project information -----------------------------------------------------
 
@@ -34,7 +35,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx_copybutton',
     'sphinx_toggleprompt',
-    'myst_parser'
+    'myst_parser',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

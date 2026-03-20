@@ -19,6 +19,7 @@
 - fix: Move project URL's to correct place in pyproject.toml
 - feat: Add docstring checking with Ruff
 - chore: Update precommit versions
+- fix: Cleanup pymarkdownlint errors
   
 ## v0.2.0 (03/03/2025)
 

@@ -211,3 +211,7 @@ paths = ['./src']
 # make_whitelist = true
 # sort_by_size = true
 # verbose = true
+
+[tool.pymarkdown]
+plugins.MD013.line_length = 100
+ignore_files = ["./docs/source/readme_link.md"]
