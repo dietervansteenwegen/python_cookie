@@ -5,17 +5,17 @@ minimum_pre_commit_version: 3.0.0
 repos:
 # Pre-commit versions self-update
   - repo: https://gitlab.com/vojko.pribudic.foss/pre-commit-update
-    rev: v0.8.0
+    rev: v0.9.0
     hooks:
       - id: pre-commit-update
         args: [--dry-run]
-        
+
 # All files + miscellaneous
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
       - id: check-added-large-files
-        args: ['--maxkb=500']
+        args: [--maxkb=500]
       - id: forbid-new-submodules
       - id: no-commit-to-branch
         args: [--branch, master]
@@ -62,7 +62,7 @@ repos:
 
 # Markdown, see https://pymarkdown.readthedocs.io/en/latest/rules/ for rules/config
   - repo: https://github.com/jackdewinter/pymarkdown/
-    rev: v0.9.32
+    rev: v0.9.36
     hooks:
       - id: pymarkdown
         types: [markdown]
@@ -89,4 +89,3 @@ repos:
         entry: uv run ruff check
         language: system
         types: [python]
-
