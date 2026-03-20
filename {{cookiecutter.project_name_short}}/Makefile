@@ -1,5 +1,5 @@
 .PHONY: prep_for_tagging
-## Prepare for tagging ()
+## Prepare for tagging (update lockfile/requirements, run pre-commit/deptry/vulture)
 prep_for_tagging:
 	@echo "🚀 Checking lock file consistency with 'pyproject.toml'"
 	@uv sync --locked
@@ -14,8 +14,7 @@ prep_for_tagging:
 	@uv run vulture ./src
 
 .PHONY: cleanup_git
-## Create list of local branches in a temporary file.
-## Afterwards remove all branches from file.
+## List all local branches in a temporary file. Afterwards remove all branches from file.
 cleanup_git:
 	@echo "*****************************************************************************"
 	@echo ">> Creating list of all merged branches without current, master or develop"
@@ -29,6 +28,7 @@ cleanup_git:
 
 {% if cookiecutter.add_documentation -%}
 .PHONY: update_docs
+## Update the documentation
 update_docs:
 	sphinx-apidoc.exe --force --output-dir ./docs/source ./src
 	sphinx-build -b html docs/source/ docs/build/
@@ -51,7 +51,6 @@ install:
 clean:
 	rm -rf build
 	rm -rf dist
-
 {% if cookiecutter.add_gui -%}
 .PHONY: ui
 ## Convert UI files to .py
@@ -59,13 +58,13 @@ ui:
 	@pyside6-uic assets/ui_sources/mainwindow.ui -o src/{{cookiecutter.module_name}}/ui_sources/mainwindow.py
 {%- endif %}
 
-
 #################################################################################
 # Self Documenting Commands                                                     #
 #################################################################################
 
 .DEFAULT_GOAL := help
 
+.PHONY: help
 # Based on <http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html>
 # sed script explained:
 # /^##/:
@@ -81,7 +80,6 @@ ui:
 # 	* print line
 # Separate expressions are necessary because labels cannot be delimited by
 # semicolon; see <http://stackoverflow.com/a/11799865/1968>
-.PHONY: help
 help:
 	@echo "$$(tput bold)Available commands:$$(tput sgr0)"
 	@sed -n -e "/^## / { \
