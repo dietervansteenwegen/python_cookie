@@ -35,12 +35,13 @@ dynamic = ["version"]
 Homepage = 'https://boxfish.be'
 Repository = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}.git'
 Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}/blob/master/CHANGELOG.md'
-# Documentation = 'https://readthedocs.org'
+
 
 {% if cookiecutter.add_gui -%}[project.gui-scripts]
 {{cookiecutter.module_name}}_gui = '{{cookiecutter.module_name}}.__main__:run'
 {% else -%}
 
+# Documentation = 'https://readthedocs.org'
 [project.scripts]
 {{cookiecutter.module_name}}_cli = '{{cookiecutter.module_name}}.__main__:run'
 {%- endif %}
@@ -85,13 +86,15 @@ generate-hashes = true
 {{cookiecutter.module_name}} = { workspace = true }
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/{{cookiecutter.module_name}}"]
+
 
 {%- if cookiecutter.add_data_dir %}
+packages = ["src/{{cookiecutter.module_name}}"]
 [tool.hatch.build.targets.wheel.force-include]
-"src/{{cookiecutter.module_name}}/data" = "{{cookiecutter.module_name}}/data"
+
 
 {%- endif %}
+"src/{{cookiecutter.module_name}}/data" = "{{cookiecutter.module_name}}/data"
 [tool.setuptools.packages.find]
 where = ['src'] # list of folders that contain the packages (['.'] by default)
 include = [
@@ -194,7 +197,8 @@ convention = "google"
 # Ignore `PLR2004` (magic value used in comparison) for pytest files
 # Ignore `INP001` (file is part of an implicit namespace package) for pytest files
 # Ignore `N802` (function name should be lowercase) for pytest files
-"**/test/*.py" = ["S101", "PLR2004", "INP001", "N802"]
+# Ignore 'D' (docstrings required for classes/methods/...) for pytest files
+"tests/**/*.py" = ["S101", "PLR2004", "INP001", "N802", "D"]
 
 [tool.ruff.format]
 quote-style = "single"

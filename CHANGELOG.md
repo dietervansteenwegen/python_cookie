@@ -20,6 +20,7 @@
 - feat: Add docstring checking with Ruff
 - chore: Update precommit versions
 - fix: Cleanup pymarkdownlint errors
+- fix: Let Ruff linting ignore missing docstring errors in tests
   
 ## v0.2.0 (03/03/2025)
 
