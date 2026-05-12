@@ -12,6 +12,7 @@ applyTo: "**/*.py"
 - Put imports on top and order according to ruff (stdlib, third party, local)
 - For small scripts, use inline script metadata according to pep 723
 - Avoid specifying long messages outside the exception class (see Ruff TRY003). Define err_msg:str on the line above and pass that to the exception
+- Don´t ask permission for pytest runs, just run the tests
 
 ## Documentation/docstrings/typing
 - Ensure functions, methods and classes have descriptive names.

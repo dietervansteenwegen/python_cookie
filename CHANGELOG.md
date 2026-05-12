@@ -23,6 +23,7 @@
 - fix: Let Ruff linting ignore missing docstring errors in tests
 - build: Start tagging with v0.0.0 as initial version
 - feat: Add Ruff TRY003 guideline for copilot
+- feat: let copilot run pytest without asking
   
 ## v0.2.0 (03/03/2025)
 
