@@ -25,6 +25,7 @@
 - feat: Add Ruff TRY003 guideline for copilot
 - feat: let copilot run pytest without asking
 - build: additional classifiers and audience in pyproject.toml
+- build: improve __version__ tracking
   
 ## v0.2.0 (03/03/2025)
 
