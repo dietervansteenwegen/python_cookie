@@ -18,6 +18,7 @@ classifiers = [
     'Programming Language :: Python :: 3.11',
     'Programming Language :: Python :: 3.12',
     'Programming Language :: Python :: 3.13',
+    'Programming Language :: Python :: 3.14',
     {% if cookiecutter.add_gui -%}'Environment :: X11 Applications',{% else %}"Environment :: Console",{% endif %}
     {% if cookiecutter.add_gui -%}"Environment :: Win32 (MS Windows)",{% endif %}
     "Intended Audience :: Developers",
@@ -38,20 +39,19 @@ dependencies = [
 dynamic = ["version"]
 
 [project.urls]
-Homepage = 'https://boxfish.be'
-Repository = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}.git'
-Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}/blob/master/CHANGELOG.md'
+
 
 
 {% if cookiecutter.add_gui -%}[project.gui-scripts]
 {{cookiecutter.module_name}}_gui = '{{cookiecutter.module_name}}.__main__:run'
-{% else -%}
-
-# Documentation = 'https://readthedocs.org'
-[project.scripts]
+{% else -%}[project.scripts]
 {{cookiecutter.module_name}}_cli = '{{cookiecutter.module_name}}.__main__:run'
 {%- endif %}
 
+Homepage = 'https://boxfish.be'
+Repository = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}.git'
+Changelog = 'https://github.com/dietervansteenwegen/{{cookiecutter.project_name_short}}/blob/master/CHANGELOG.md'
+# Documentation = 'https://readthedocs.org'
 [build-system]
 requires = ["hatchling", "versioningit"]
 build-backend = "hatchling.build"
@@ -63,6 +63,9 @@ dev = [
     "deptry>=0.22.0",
     "ruff>=0.9.6",
     "vulture>=2.14",
+    "pytest",
+    "pytest-cov",
+    "tox",
     {%- if cookiecutter.add_gui %}
     "pyside6-stubs>=6.4",
     {%- endif %}
@@ -216,6 +219,9 @@ paths = ['./src']
 # make_whitelist = true
 # sort_by_size = true
 # verbose = true
+
+[tool.deptry]
+known_first_party = ["{{cookiecutter.module_name}}"]
 
 [tool.pymarkdown]
 plugins.MD013.line_length = 100
