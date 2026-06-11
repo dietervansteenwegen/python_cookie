@@ -89,3 +89,9 @@ repos:
         entry: uv run ruff check
         language: system
         types: [python]
+
+      - id: tox
+        name: Tox
+        entry: uv run tox
+        language: system
+        pass_filenames: false

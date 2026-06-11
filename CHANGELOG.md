@@ -27,6 +27,7 @@
 - build: additional classifiers and audience in pyproject.toml
 - build: improve __version__ tracking
 - build: add py314, tox and deptry config
+- build: add tox to precommit hooks
   
 ## v0.2.0 (03/03/2025)
 
