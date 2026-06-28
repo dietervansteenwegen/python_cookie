@@ -226,3 +226,5 @@ known_first_party = ["{{cookiecutter.module_name}}"]
 [tool.pymarkdown]
 plugins.MD013.line_length = 100
 ignore_files = ["./docs/source/readme_link.md"]
+# Allow repeated headings like "Changed" across version sections in CHANGELOG.
+plugins.md024.siblings_only = true

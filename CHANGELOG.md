@@ -28,6 +28,7 @@
 - build: improve __version__ tracking
 - build: add py314, tox and deptry config
 - build: add tox to precommit hooks
+- feat: Allow repeated headings across version sections in CHANGELOG.
   
 ## v0.2.0 (03/03/2025)
 
