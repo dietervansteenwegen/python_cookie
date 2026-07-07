@@ -23,5 +23,6 @@ applyTo: "**/*.py"
 - For complex functions, provide usage examples in the docstrings.
 - Check AND UPDATE docstrings and type hints when making changes.
 - Follow PEP 484/585/604 for type hinting.
-- Whenever making significant changes, update the changelog in `CHANGELOG.md` in the "not yet released" section. Be brief. Prefix with "<copilot>"
+- Whenever making significant changes, update the changelog in `CHANGELOG.md` in the "not yet released" section. Be brief. Prefix with "<copilot>". Use subdivisions "added", "removed", "fixed" and "changed"
 - Do not create summary documents unless explicitly requested.
+- When using CLI arguments, update the help argument and document in the README
