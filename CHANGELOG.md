@@ -29,6 +29,7 @@
 - build: add py314, tox and deptry config
 - build: add tox to precommit hooks
 - feat: Allow repeated headings across version sections in CHANGELOG.
+- build: Add empty `tests` directory to template
   
 ## v0.2.0 (03/03/2025)
 
