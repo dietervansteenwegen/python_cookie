@@ -50,6 +50,9 @@ credentials*
 ### Ruff files ###
 .ruff_cache/
 
+## Pytest/tox
+.coverage
+
 ### Environment files
 .env
 .env.*

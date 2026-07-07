@@ -30,6 +30,7 @@
 - build: add tox to precommit hooks
 - feat: Allow repeated headings across version sections in CHANGELOG.
 - build: Add empty `tests` directory to template
+- build: Raise minimum python from 3.8 to 3.11
   
 ## v0.2.0 (03/03/2025)
 
