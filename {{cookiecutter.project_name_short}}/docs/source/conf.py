@@ -19,6 +19,7 @@ sys.path.insert(0, str(Path('../..').resolve()))
 
 project = '{{cookiecutter.project_name}}'
 author = 'Dieter Vansteenwegen'
+copyright = '2026, Dieter Vansteenwegen'
 
 # The full version, including alpha/beta/rc tags
 release = __version__

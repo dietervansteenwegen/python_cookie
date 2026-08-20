@@ -34,6 +34,7 @@
 - feat: Ignore 'S108' (Probable insecure usage of temp file/dir) for pytest files
 - build: use platform independent call in "update_docs" recipe
 - docs: lots of documentation improvements
+- docs: Add copyright information to documentation
   
 ## v0.2.0 (03/03/2025)
 
