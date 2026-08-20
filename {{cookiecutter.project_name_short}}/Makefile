@@ -30,7 +30,7 @@ cleanup_git:
 .PHONY: update_docs
 ## Update the documentation
 update_docs:
-	sphinx-apidoc.exe --force --output-dir ./docs/source ./src
+	sphinx-apidoc --force --output-dir ./docs/source ./src
 	sphinx-build -b html docs/source/ docs/build/
 {%- endif %}
 
