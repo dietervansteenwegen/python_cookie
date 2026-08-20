@@ -1,4 +1,4 @@
-Welcome to {{cookiecutter.project_name}} documentation!
+Welcome to the {{cookiecutter.project_name}} documentation!
 =================================================
 
 .. toctree::
@@ -11,7 +11,7 @@ Welcome to {{cookiecutter.project_name}} documentation!
 
    modules
 
-
+   changelog_link
 
 Indices and tables
 ==================

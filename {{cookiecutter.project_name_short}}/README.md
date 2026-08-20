@@ -1,4 +1,5 @@
 # {{cookiecutter.project_name}}
+<!-- start-docs -->
 
 >{{cookiecutter.project_description}}
 
